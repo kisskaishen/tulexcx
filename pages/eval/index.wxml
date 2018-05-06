@@ -1,0 +1,12 @@
+<!--pages/eval/index.wxml-->
+<view class='eval' wx:for="{{2}}">
+    <view class='evalFl'>
+        <image src=''></image>
+    </view>
+    <view class='evalFr'>
+        <text>0的离心率</text>
+        <text>出游时间</text>
+        <text>评价时间</text>
+        <text>评价内容是真的棒棒哒</text>
+    </view>
+</view>

@@ -1,0 +1,137 @@
+/**index.wxss**/
+
+.topSearch {
+    position: relative;
+    width: 100%;
+    padding: 20rpx 0;
+    background-color: #eee;
+}
+
+.topSearch input {
+    width: 700rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin: 0 auto;
+    border-radius: 8rpx;
+    background-color: #fff;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.topSearch icon {
+    position: absolute;
+    left: 310rpx;
+    top: 38rpx;
+    z-index: 9;
+}
+
+.banner image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+
+.menuItem navigator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20rpx 0;
+}
+
+.menuItem image {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 50%;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotateY(0);
+        -moz-transform: rotateY(0);
+        -o-transform: rotateY(0);
+        -webkit-transform: rotateY(0);
+        -ms-transform: rotateY(0);
+    }
+
+    to {
+        transform: rotateY(360deg);
+        -moz-transform: rotateY(360deg);
+        -o-transform: rotateY(360deg);
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+    }
+}
+
+.menuItem:nth-child(1) image {
+    animation: rotation 3s linear 1s 1;
+    -o-animation: rotation 3s linear 1s 1;
+    -webkit-animation: rotation 3s linear 1s 1;
+    -ms-animation: rotation 3s linear 1s 1;
+    -moz-animation: rotation 3s linear 1s 1;
+}
+
+.menuItem:nth-child(2) image {
+    animation: rotation 2s linear 2s 1;
+    -o-animation: rotation 2s linear 2s 1;
+    -webkit-animation: rotation 2s linear 2s 1;
+    -ms-animation: rotation 2s linear 2s 1;
+    -moz-animation: rotation 2s linear 2s 1;
+}
+
+.menuItem:nth-child(3) image {
+    animation: rotation 1s linear 3s 1;
+    -o-animation: rotation 1s linear 3s 1;
+    -webkit-animation: rotation 1s linear 3s 1;
+    -ms-animation: rotation 1s linear 3s 1;
+    -moz-animation: rotation 1s linear 3s 1;
+}
+
+.menuItem text {
+    font-size: 30rpx;
+    padding: 10rpx 0;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30rpx;
+}
+
+.list .tip {
+    border-left: 8rpx solid #fd7c28;
+    padding-left: 16rpx;
+}
+
+.goods {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #fff;
+    padding: 20rpx;
+    margin-top: 20rpx;
+}
+
+.goods image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.goods .goodsText {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.goods .goodsText text {
+    font-size: 30rpx;
+}
+
+.goodsName {
+    font-weight: bold;
+}

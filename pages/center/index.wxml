@@ -1,0 +1,22 @@
+<!--pages/center/index.wxml-->
+<!--index.wxml-->
+<view class="container">
+    <view class="userinfo">
+        <image src='../../images/user_bg.jpg' class='user_bg'></image>
+        <view class='userinfoTop'>
+            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+            <block wx:else>
+                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            </block>
+        </view>
+    </view>
+    <view class='userList'>
+        <view class='list' wx:for="{{listData}}" wx:key="{{item}}">
+            <navigator url='{{item.path}}'>
+                <image src='{{item.img}}'></image>
+                <text>{{item.name}}</text>
+            </navigator>
+        </view>
+    </view>
+</view>

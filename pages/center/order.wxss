@@ -1,0 +1,60 @@
+/* pages/center/order.wxss */
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1rpx solid #ccc;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+}
+.nav text {
+    color: #333;
+    font-size: 28rpx;
+    padding: 20rpx 0;
+}
+.nav text.active {
+    color: #fd7c28;
+    font-size: 30rpx;
+    border-bottom: 4rpx solid #fd7c28;
+}
+.list {
+    margin-top: 96rpx;
+}
+.goods {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 20rpx;
+    margin-top: 20rpx;
+}
+
+.goodsImg {
+    margin-right: 20rpx;
+}
+
+.goodsImg image {
+    width: 200rpx;
+    height: 180rpx;
+    border:1rpx solid red;
+}
+
+.goodsInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    width: 500rpx;
+}
+.goodsInfo > view {
+    font-size: 28rpx;
+    color: #444;
+    padding: 6rpx 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

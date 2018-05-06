@@ -1,0 +1,34 @@
+<!--pages/index/goodsList.wxml-->
+<view class='container'>
+    <view class='topSearch'>
+        <icon type='search' size='14'></icon>
+        <navigator url='/pages/search/index'>搜索</navigator>
+    </view>
+    <view class='body'>
+        <view class='filter'>
+            <view class='timeFilter filterChoose'>
+                <picker range='{{timeArray}}' range-key='time' value='{{timeIndex}}' bindchange="timeChange">
+                    <view>{{timeArray[timeIndex].time}}</view>
+                </picker>
+            </view>
+            <view class='areaFilter filterChoose'>
+                <picker range='{{areaArray}}' range-key='area' value='{{areaIndex}}' bindchange="areaChange">
+                    <view>{{areaArray[areaIndex].area}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class='list'>
+            <view class='goods' wx:for="{{listData}}" wx:key="{{item}}">
+                <navigator url='/pages/detail/index'>
+                    <image src='{{item.img}}'></image>
+                    <image src='/images/hot.png' class='iconLittle' wx:if="{{item.status==0}}"></image>
+                    <view class='goodsText'>
+                        <text class='goodsName'>{{item.name}}</text>
+                        <text>出发时间：{{item.startTime}}</text>
+                        <text>剩余座位：{{item.storage}}个</text>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

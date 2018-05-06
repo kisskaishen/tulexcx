@@ -1,0 +1,215 @@
+/* pages/equip/detail.wxss */
+
+.container {
+    margin-bottom: 124rpx;
+}
+
+.banner {
+    background-color: #fff;
+    height: 750rpx;
+}
+
+.banner swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.banner swiper image {
+    width: 100%;
+    height: 100%;
+}
+
+.goodsInfo {
+    border-top: 1rpx solid #ccc;
+    border-bottom: 1rpx solid #ccc;
+    padding: 10rpx 0;
+    background-color: #fff;
+}
+
+.goodsInfo view {
+    padding: 10rpx 20rpx;
+    font-size: 30rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.goodsInfo .name {
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.goodsInfo .price text:last-child {
+    font-size: 24rpx;
+    color: #999;
+    margin-left: 20rpx;
+    text-decoration: line-through;
+}
+
+.specInfo {
+    background-color: #fff;
+    margin-top: 20rpx;
+    padding: 10rpx 0;
+}
+
+.spec {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: baseline;
+    padding: 10rpx 20rpx;
+}
+.specActive {
+    border:1px solid red !important;
+}
+.spec view:first-child {
+    color: #999;
+    font-size: 28rpx;
+    margin-right: 40rpx;
+}
+
+.spec view:last-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.spec view:last-child text {
+    padding: 6rpx 10rpx;
+    border: 1rpx solid #999;
+    font-size: 24rpx;
+    margin-right: 10rpx;
+}
+
+.spec view:last-child input {
+    border: 1rpx solid #999;
+    width: 100rpx;
+    text-align: center;
+    font-size: 26rpx;
+    margin: 0 20rpx;
+}
+
+.spec view:last-child label {
+    border: 1rpx solid #999;
+    width: 48rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    text-align: center;
+    font-size: 38rpx;
+}
+
+.evalute {
+    margin-top: 20rpx;
+    background-color: #fff;
+    font-size: 24rpx;
+}
+
+.tip {
+    position: relative;
+    padding: 14rpx 20rpx;
+    border-top: 1rpx solid #ccc;
+    border-bottom: 1rpx solid #ccc;
+    font-size: 26rpx;
+}
+
+.evalute .tip::after {
+    position: absolute;
+    content: '';
+    right: 20rpx;
+    top: 24rpx;
+    width: 20rpx;
+    height: 20rpx;
+    border-top: 1rpx solid #ccc;
+    border-right: 1rpx solid #ccc;
+    transform: rotate(45deg);
+}
+
+.evalList {
+    padding: 16rpx 40rpx;
+    border-bottom: 1rpx solid #ccc;
+}
+
+.evalTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16rpx;
+}
+
+.evalTopFl text {
+    margin-right: 20rpx;
+}
+
+.evalTopFl text:last-child {
+    padding: 4rpx 14rpx;
+    background-color: #444;
+    color: #fff;
+    border-radius: 8rpx;
+}
+
+.evalTopFr {
+    font-size: 24rpx;
+}
+
+.introduce {
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+
+.introduce image {
+    width: 100%;
+    margin-bottom: -9rpx;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 9;
+    border-top: 1rpx solid #ccc;
+}
+
+.footerMenu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    height: 120rpx;
+}
+
+.footerMenu view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    font-size: 24rpx;
+    color: #515151;
+}
+
+.footerMenu view:nth-child(1) {
+    flex: 1;
+    border-right: 1rpx solid #ccc;
+}
+
+.footerMenu view:nth-child(2) {
+    flex: 1;
+}
+
+.footerMenu view:nth-child(3) {
+    flex: 3;
+}
+
+.footerMenu image {
+    display: block;
+    width: 54rpx;
+    height: 54rpx;
+    margin: 0 auto;
+}
+
+.footerMenu navigator,button {
+    border-radius: 0;
+    width: 100%;
+}

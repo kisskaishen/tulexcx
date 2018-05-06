@@ -1,0 +1,45 @@
+<!--pages/index/activity.wxml-->
+<view class='container'>
+    <view class='banner'>
+        <swiper indicator-dots autoplay interval='4000' duration="1000">
+            <block wx:for="{{imgUrls}}" wx:key="{{item}}">
+                <swiper-item>
+                    <navigator url='/pages/detail/index'>
+                        <image src='{{item}}'></image>
+                    </navigator>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class='list'>
+        <view class='listFl'>
+            <view class='typeName'>门票特卖</view>
+            <view class='goods' wx:for="{{4}}" wx:key="{{item}}">
+                <navigator url="/pages/detail/index">
+                    <image src=''></image>
+                    <view class='goodsName'>景点名称</view>
+                    <view>出发日期</view>
+                    <view class='price'>
+                        <text class='activityPrice'>¥30.00</text>
+                        <text class='originPrice'>¥60.00</text>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+        <view class='listFr'>
+            <view class='typeName'>装备特卖</view>
+            <view class='goods' wx:for="{{4}}" wx:key="{{item}}">
+                <navigator url="/pages/equip/detail">
+                    <image src=''></image>
+                    <view class='goodsName'>装备名称</view>
+                    <!-- <view>出发日期</view> -->
+                    <view class='price'>
+                        <text class='activityPrice'>¥30.00</text>
+                        <text class='originPrice'>¥60.00</text>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>

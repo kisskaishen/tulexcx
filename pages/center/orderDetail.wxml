@@ -1,0 +1,71 @@
+<!--pages/center/orderDetail.wxml-->
+<view class='container'>
+    <view class='top'>
+        <view class='topImg'>
+            <image src=''></image>
+        </view>
+        <view class='topInfo'>
+            <text class='name'>名称</text>
+            <text class='price'>¥58.00</text>
+            <text class='tip'>注意事项</text>
+        </view>
+    </view>
+
+    <view class='userView' wx:if="{{payType == 'tickets'}}">
+        <view class='userInfo contact'>
+            <text class='tipTxt'>联系人信息</text>
+            <view>
+                <label>手机号</label>
+                <text>13798238693</text>
+            </view>
+            <view>
+                <label>姓名</label>
+                <text>秦文凯</text>
+            </view>
+        </view>
+
+        <view class='userInfo visitor' wx:for="{{2}}">
+            <text class='tipTxt'>游客{{index+1}}信息</text>
+            <view>
+                <label>姓名</label>
+                <text>秦文凯</text>
+            </view>
+            <view>
+                <label>手机号</label>
+                <text>13798238693</text>
+            </view>
+
+            <view>
+                <label>身份证</label>
+                <text>410823199510240078</text>
+            </view>
+        </view>
+
+    </view>
+
+    <view class='equipView' wx:elif="{{payType == 'equip'}}">
+        <view class='address'>
+            <view>
+                <text>姓名</text>
+                <text>手机号</text>
+            </view>
+            <view>
+                <text>地址</text>
+            </view>
+        </view>
+        <view class='equipInfo'>
+            <view>
+                <text>配送快递</text>
+                <text>满299包邮</text>
+            </view>
+            <view>
+                <text>优惠券</text>
+                <text>暂无开放优惠券</text>
+            </view>
+            <view>
+                <text>买家留言</text>
+                <text>这里是买家留言</text>
+            </view>
+        </view>
+    </view>
+</view>

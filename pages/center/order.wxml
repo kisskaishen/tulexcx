@@ -1,0 +1,20 @@
+<!--pages/center/order.wxml-->
+<view class='container'>
+    <view class='nav'>
+        <text wx:for="{{navs}}" wx:key="{{item}}" data-id="{{item.id}}" class='{{navIndexId == item.id?"active":""}}' bindtap='navClick'>{{item.name}}</text>
+    </view>
+
+    <view class='list'>
+        <navigator url='/pages/center/orderDetail?payType={{payType}}' class='goods' wx:for="{{6}}" wx:key="{{item}}">
+            <view class='goodsImg'>
+                <image src=''></image>
+            </view>
+            <view class='goodsInfo'>
+                <view>订单号：</view>
+                <view>商品名称</view>
+                <view>商品价格</view>
+                <view>出行时间（购买时间）</view>
+            </view>
+        </navigator>
+    </view>
+</view>

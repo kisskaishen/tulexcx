@@ -1,0 +1,69 @@
+<!--pages/detail/index.wxml-->
+<view class='container'>
+    <view class='banner'>
+        <swiper indicator-dots autoplay interval='3000' duration="1000">
+            <block wx:for="{{imgUrls}}" wx:key="{{item}}">
+                <swiper-item>
+                    <image src='{{item}}'></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class='goodsInfo'>
+        <view class='infoTop'>
+            <view class='infoFl'>
+                <text class='goodsName'>焦作云台山</text>
+                <text>前往时间：2018-03-31</text>
+                <text>已报名：10</text>
+                <text>剩余人数：10</text>
+            </view>
+            <view class='infoFr'>
+                <text>¥40起</text>
+                <navigator url='/pages/pay/index?payType=ticket'>
+                    <button type='warn' size='mini'>
+                        预订
+                    </button>
+                </navigator>
+            </view>
+        </view>
+        <view class='infoBottom'>
+            <text class="tip">景点介绍</text>
+            <text>介绍</text>
+        </view>
+    </view>
+
+    <!-- <view class='evaluate'>
+        <view class='evalList'>
+            <view class='tip'>
+                <text>用户评价</text>
+                <navigator url='/pages/eval/index'>更多评价>></navigator>
+            </view>
+            <view class='eval' wx:for="{{2}}">
+                <view class='evalFl'>
+                    <image src=''></image>
+                </view>
+                <view class='evalFr'>
+                    <text>0的离心率</text>
+                    <text>出游时间</text>
+                    <text>评价时间</text>
+                    <text>评价内容是真的棒棒哒</text>
+                </view>
+            </view>
+        </view>
+    </view> -->
+
+    <view class='more'>
+        <view class='tip'>更多景点推荐</view>
+        <view class='moreList'>
+            <view class='moreGoods' wx:for="{{2}}">
+                <image src=''></image>
+                <text class='goodsName'>华山风景区</text>
+                <view class='other'>
+                    <text>出发时间</text>
+                    <text>价格</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,27 @@
+/* pages/pay/address.wxss */
+.list {
+    margin: 20rpx 0;
+}
+.address {
+    padding: 20rpx;
+    background-color: #fff;
+    border-top: 1rpx solid #ccc;
+    border-bottom: 1rpx solid #ccc;
+}
+.address view text {
+    margin-right: 40rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+.addBtn {
+    position: fixed;
+    bottom: 40rpx;
+    left: 0;
+    right: 0;
+}
+.addBtn button {
+    width: 700rpx;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #000;
+}

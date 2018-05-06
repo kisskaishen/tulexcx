@@ -1,0 +1,23 @@
+/* pages/search/index.wxss */
+.topSearch {
+    position: relative;
+    width: 100%;
+    padding: 20rpx 0;
+    background-color: #eee;
+}
+.topSearch input {
+    width: 640rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin: 0 auto;
+    border-radius: 8rpx;
+    background-color: #fff;
+    font-size: 28rpx;
+    padding-left: 60rpx;
+}
+.topSearch icon {
+    position: absolute;
+    left: 48rpx;
+    top: 38rpx;
+    z-index: 9;
+}

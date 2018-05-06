@@ -1,0 +1,41 @@
+<view class='container'>
+    <view class='topSearch'>
+        <icon type='search' size='14'></icon>
+        <input placeholder="搜索" confirm-type="search" bindconfirm="search"></input>
+    </view>
+
+    <view class='banner'>
+        <swiper indicator-dots autoplay interval='4000' duration="1000">
+            <block wx:for="{{imgUrls}}" wx:key="{{item}}">
+                <swiper-item>
+                    <navigator url='/pages/detail/index'>
+                        <image src='{{item}}'></image>
+                    </navigator>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class='menu'>
+        <view class='menuItem' wx:for="{{menuData}}" wx:key="{{item}}">
+             <navigator url='{{item.path}}'> 
+                <image src='{{item.img}}'></image>
+                <text>{{item.name}}</text>
+             </navigator> 
+        </view>
+    </view>
+
+    <view class='list'>
+        <view class='tip'>推荐景点</view>
+        <view class='goods' wx:for="{{3}}" wx:key="{{item}}">
+            <navigator url='/pages/detail/index'>
+                <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+                <view class='goodsText'>
+                    <text class='goodsName'>焦作云台山</text>
+                    <text>出发时间：2018-03-31</text>
+                    <text>剩余座位：20个</text>
+                </view>
+            </navigator>
+        </view>
+    </view>
+</view>

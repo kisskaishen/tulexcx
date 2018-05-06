@@ -1,0 +1,150 @@
+/* pages/detail/index.wxss */
+
+.banner image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.goodsInfo {
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    background-color: #fff;
+}
+
+.infoTop {
+    display: flex;
+    justify-content: space-between;
+    padding: 10rpx 20rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+
+.infoTop .infoFl {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.infoTop .infoFr {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.goodsName {
+    font-weight: bold;
+    font-size: 30rpx;
+}
+
+.infoBottom {
+    padding: 10rpx 20rpx;
+}
+
+.infoBottom text {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.tip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    border-left:8rpx solid #fd7c28;
+    padding-left: 10rpx;
+    font-size: 30rpx;
+    margin:16rpx 0;
+}
+.tip navigator {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.evaluate {
+    display: flex;
+    flex-direction: column;
+    font-size: 28rpx;
+    background-color: #fff;
+    margin-top: 20rpx;
+}
+.evalList {
+    padding: 0 20rpx;
+}
+.eval {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10rpx 0;
+    border-top: 1rpx solid #ccc;
+}
+.evalFl {
+    flex: 1;
+}
+.evalFl image {
+    display: block;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    border:1px solid red;
+    margin: 0 auto;
+}
+
+.evalFr {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    font-size: 24rpx;
+}
+
+
+.more {
+    margin-top: 20rpx;
+    background-color: #fff;
+}
+.more .tip {
+    margin-left: 20rpx;
+}
+.moreList {
+    padding: 10rpx 40rpx;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    justify-content: space-between;
+}
+.moreGoods {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12rpx;
+    border: 1px solid #999;
+    width: 300rpx;
+}
+.moreGoods image {
+    width:240rpx;
+    height: 200rpx;
+    border:1rpx solid red;
+}
+
+.moreGoods .goodsName {
+    font-size: 28rpx;
+}
+
+.moreGoods .other {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.moreGoods .other text {
+    font-size: 24rpx;
+}

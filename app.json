@@ -1,0 +1,51 @@
+{
+    "pages": [
+        "pages/center/index",
+        
+        "pages/index/index",
+        
+        "pages/equip/detail",
+        
+        
+        
+        "pages/center/orderDetail",
+        "pages/center/order",
+        "pages/pay/index",
+        "pages/pay/address",
+        "pages/detail/index",
+        "pages/index/activity",
+        "pages/index/goodsList",
+        "pages/index/equip",
+        "pages/eval/index",
+        "pages/search/index",
+        "pages/logs/log"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#000",
+        "navigationBarTitleText": "途乐户外",
+        "navigationBarTextStyle": "#fff",
+        "enablePullDownRefresh":true
+    },
+    "tabBar": {
+        "color": "#999",
+        "selectedColor": "#fd7c28",
+        "borderStyle": "white",
+        "backgroundColor": "#000",
+        "posution": "bottom",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/index.png",
+                "selectedIconPath": "images/index_active.png"
+            },
+            {
+                "pagePath": "pages/center/index",
+                "text": "个人中心",
+                "iconPath": "images/center.png",
+                "selectedIconPath": "images/center_active.png"
+            }
+        ]
+    }
+}

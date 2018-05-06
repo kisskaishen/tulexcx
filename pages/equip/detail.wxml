@@ -1,0 +1,88 @@
+<!--pages/equip/detail.wxml-->
+<view class='container'>
+    <view class='banner'>
+        <swiper indicator-dots autoplay duration="1000">
+            <block wx:for="{{bannerImgs}}" wx:key="{{item}}">
+                <swiper-item>
+                    <image src='{{item.img}}'></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class='goodsInfo'>
+        <view class='name'>极地抓绒衣</view>
+        <view class='price'>
+            <text>￥158.00</text>
+            <text>￥200.00</text>
+        </view>
+    </view>
+    <!-- 规格尺寸模块暂时隐藏 -->
+    <!-- <view class='specInfo'>
+        <view class='spec'>
+            <view>规格</view>
+            <view>
+                <text wx:for="{{spec1}}" wx:key="{{item}}" data-id='{{item.id}}' data-index='{{index}}' class='{{index == currentSpec?"specActive":""}}' bindtap='specChoose'>{{item.name}}</text>
+            </view>
+        </view>
+        <view class='spec'>
+            <view>尺寸</view>
+            <view>
+                <text wx:for="{{spec2}}" wx:key="{{item}}" data-id='{{item.id}}' data-index='{{index}}' class='{{index == current2Spec?"specActive":""}}' bindtap='spec2Choose'>{{item.name}}</text>
+            </view>
+        </view>
+        <view class='spec'>
+            <view>数量</view>
+            <view>
+                <label bindtap='reduceNumber'>-</label>
+                <input type='number' value="{{buyNumber}}"></input>
+                <label bindtap='addNumber'>+</label>
+            </view>
+        </view>
+    </view> -->
+    <!-- 评论模块暂时隐藏 -->
+    <!-- <view class='evalute'>
+        <view class='tip'>
+            <navigator url='/pages/eval/index'>商品评价</navigator>
+        </view>
+        <view class='evalList'>
+            <view class='evalTop'>
+                <view class='evalTopFl'>
+                    <text>用户名称</text>
+                    <text>好评</text>
+                </view>
+                <view class='evalTopFr'>
+                    <text>2018-03-13 20:17:49</text>
+                </view>
+            </view>
+            <view class='evalText'>好评哦好评哦</view>
+        </view>
+    </view> -->
+
+    <view class='introduce'>
+        <view class='tip'>商品介绍</view>
+        <view>
+            <block wx:for="{{3}}" wx:key="{{item}}">
+                <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+            </block>
+        </view>
+    </view>
+
+    <view class='footer'>
+        <view class='footerMenu'>
+            <view class='home' bindtap='goIndex'>
+                <image src='/images/goIndex.png'></image>
+                <text>首页</text>
+            </view>
+            <view class='calling' bindtap='calling'>
+                <image src='/images/calling.png'></image>
+                <text>客服</text>
+            </view>
+            <view class='buyBtn'>
+                <!-- <navigator url='/pages/pay/index'><button type='warn'>立即购买</button></navigator> -->
+                <button type='warn' bindtap='buyTip'>立即购买</button>
+            </view>
+        </view>
+    </view>
+
+</view>
