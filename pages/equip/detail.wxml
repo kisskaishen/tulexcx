@@ -2,19 +2,19 @@
 <view class='container'>
     <view class='banner'>
         <swiper indicator-dots autoplay duration="1000">
-            <block wx:for="{{bannerImgs}}" wx:key="{{item}}">
+            <block wx:for="{{equip_info.images}}" wx:key="{{item}}">
                 <swiper-item>
-                    <image src='{{item.img}}'></image>
+                    <image src='{{item.image}}'></image>
                 </swiper-item>
             </block>
         </swiper>
     </view>
 
     <view class='goodsInfo'>
-        <view class='name'>极地抓绒衣</view>
+        <view class='name'>{{equip_info.equip_name}}</view>
         <view class='price'>
-            <text>￥158.00</text>
-            <text>￥200.00</text>
+            <text>￥{{equip_info.sale_price}}</text>
+            <text>￥{{equip_info.price}}</text>
         </view>
     </view>
     <!-- 规格尺寸模块暂时隐藏 -->
@@ -62,8 +62,8 @@
     <view class='introduce'>
         <view class='tip'>商品介绍</view>
         <view>
-            <block wx:for="{{3}}" wx:key="{{item}}">
-                <image src='http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'></image>
+            <block wx:for="{{equip_info.introduce_images}}" wx:key="{{item}}">
+                <image src='{{item.image}}'></image>
             </block>
         </view>
     </view>

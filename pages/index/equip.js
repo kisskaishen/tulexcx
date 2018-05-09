@@ -1,15 +1,17 @@
 // pages/index/goodsList.js
+const app = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        bannerImgs:[
+        bannerImgs: [
             {
-                id:'1',
-                img:'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-                path:'/pages/equip/detail'
+                id: '1',
+                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+                path: '/pages/equip/detail'
             },
             {
                 id: '2',
@@ -17,73 +19,8 @@ Page({
                 path: '/pages/equip/detail'
             }
         ],
-        menuList:[
-            {
-                id:'1',
-                name:'户外服',
-                path:'/pages/equip/detail',
-                img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
-            },
-            {
-                id: '2',
-                name: '户外裤',
-                path: '/pages/equip/detail',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'
-            },
-            {
-                id: '3',
-                name: '户外鞋',
-                path: '/pages/equip/detail',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-            },
-            {
-                id: '4',
-                name: '露营装备',
-                path: '/pages/equip/detail',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg'
-            },
-            {
-                id: '5',
-                name: '登山装备',
-                path: '/pages/equip/detail',
-                img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
-            },
-            {
-                id: '6',
-                name: '配饰装备',
-                path: '/pages/equip/detail',
-                img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
-            },
-            {
-                id: '7',
-                name: '户外食品',
-                path: '/pages/equip/detail',
-                img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
-            }
-        ],
-        listData:[
-            {
-                name:'富贵象40L登山包',
-                img:'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-                goods_price:'￥200.00',
-                taobao_price:'￥289.00',
-                status:'1'
-            },
-            {
-                name: '户外特工 情侣高帮登山鞋H1',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-                goods_price: '￥339.00',
-                taobao_price: '￥669.00',
-                status: '0'
-            },
-            {
-                name: '绿色丛林',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-                goods_price: '￥15.9',
-                taobao_price: '￥22.00',
-                status: '1'
-            },
-        ],
+        menuList:[],
+        listData: [],
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -106,7 +43,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        this.getEquipList()
     },
 
     /**
@@ -161,5 +98,18 @@ Page({
         this.setData({
             areaIndex: e.detail.value
         })
+    },
+    // 获取列表
+    getEquipList(class_id) {
+        app.api.post('equip/special/special_index',{class_id:class_id|| ''}).then(res=>{
+            this.setData({
+                menuList:res.data.class,
+                listData:res.data.list
+            })
+        })
+    },
+    // 点击装备分类
+    classChoose(e) {
+        this.getEquipList(e.currentTarget.dataset.class_id)
     }
 })

@@ -1,10 +1,16 @@
 {
     "pages": [
-        "pages/center/index",
-        
         "pages/index/index",
         
+        "pages/index/activity",
+        
+        "pages/index/equip",
         "pages/equip/detail",
+        
+        
+        "pages/center/index",
+        
+        
         
         
         
@@ -13,9 +19,7 @@
         "pages/pay/index",
         "pages/pay/address",
         "pages/detail/index",
-        "pages/index/activity",
         "pages/index/goodsList",
-        "pages/index/equip",
         "pages/eval/index",
         "pages/search/index",
         "pages/logs/log"

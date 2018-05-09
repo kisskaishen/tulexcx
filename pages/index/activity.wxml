@@ -15,28 +15,28 @@
     <view class='list'>
         <view class='listFl'>
             <view class='typeName'>门票特卖</view>
-            <view class='goods' wx:for="{{4}}" wx:key="{{item}}">
-                <navigator url="/pages/detail/index">
-                    <image src=''></image>
-                    <view class='goodsName'>景点名称</view>
-                    <view>出发日期</view>
+            <view class='goods' wx:for="{{list_info.t_list}}" wx:key="{{item}}">
+                <navigator url="/pages/detail/index?ticket_id={{item.ticket_id}}">
+                    <image src='{{item.ticket_img}}'></image>
+                    <view class='goodsName'>{{item.ticket_name}}</view>
+                    <view>发团日：{{item.leave_date}}</view>
                     <view class='price'>
-                        <text class='activityPrice'>¥30.00</text>
-                        <text class='originPrice'>¥60.00</text>
+                        <text class='activityPrice'>¥{{item.sale_price}}</text>
+                        <text class='originPrice'>¥{{item.price}}</text>
                     </view>
                 </navigator>
             </view>
         </view>
         <view class='listFr'>
             <view class='typeName'>装备特卖</view>
-            <view class='goods' wx:for="{{4}}" wx:key="{{item}}">
-                <navigator url="/pages/equip/detail">
-                    <image src=''></image>
-                    <view class='goodsName'>装备名称</view>
+            <view class='goods' wx:for="{{list_info.e_list}}" wx:key="{{item}}">
+                <navigator url="/pages/equip/detail?equip_id={{item.equip_id}}">
+                    <image src='{{item.equip_img}}'></image>
+                    <view class='goodsName'>{{item.equip_name}}</view>
                     <!-- <view>出发日期</view> -->
                     <view class='price'>
-                        <text class='activityPrice'>¥30.00</text>
-                        <text class='originPrice'>¥60.00</text>
+                        <text class='activityPrice'>¥{{item.sale_price}}</text>
+                        <text class='originPrice'>¥{{item.price}}</text>
                     </view>
                 </navigator>
             </view>

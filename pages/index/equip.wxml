@@ -1,9 +1,5 @@
 <!--pages/index/goodsList.wxml-->
 <view class='container'>
-    <!-- <view class='topSearch'>
-        <icon type='search' size='14'></icon>
-        <navigator url='/pages/search/index'>搜索</navigator>
-    </view> -->
     <view class='banner'>
         <swiper indicator-dots autoplay interval='3000' duration="1000">
             <block wx:for="{{bannerImgs}}" wx:key="{{item}}">
@@ -16,21 +12,25 @@
         </swiper>
     </view>
     <view class='menu'>
-        <view class='menuList' wx:for="{{menuList}}" wx:key="{{item.id}}">
+        <view class='menuList' bindtap='classChoose'>
+            <image src='/images/all_class.png'></image>
+            <text>全部分类</text>
+        </view>
+        <view class='menuList' wx:for="{{menuList}}" wx:key="{{item.id}}" data-class_id='{{item.class_id}}' bindtap='classChoose'>
             <image src='{{item.img}}'></image>
-            <text>{{item.name}}</text>
+            <text>{{item.class_name}}</text>
         </view>
     </view>
     <view class='list'>
         <view class='goods' wx:for="{{listData}}" wx:key="{{item}}">
-            <navigator url='/pages/equip/detail'>
-                <image src='{{item.img}}'></image>
-                <image src='/images/hot.png' class='iconLittle' wx:if="{{item.status==0}}"></image>
+            <navigator url='/pages/equip/detail?equip_id={{item.equip_id}}'>
+                <image src='{{item.equip_img}}'></image>
+                <image src='/images/hot.png' class='iconLittle' wx:if="{{item.is_hot=='1'}}"></image>
                 <view class='goodsText'>
-                    <text class='goodsName'>{{item.name}}</text>
+                    <text class='goodsName'>{{item.equip_name}}</text>
                     <view class='price'>
-                        <text>{{item.goods_price}}</text>
-                        <text>淘宝价：{{item.taobao_price}}</text>
+                        <text>{{item.price}}</text>
+                        <text class='tm_price' wx:if="{{item.tm_price}}">天猫价：{{item.tm_price}}</text>
                     </view>
                 </view>
             </navigator>

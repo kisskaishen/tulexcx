@@ -1,22 +1,14 @@
 // pages/equip/detail.js
+const app = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        bannerImgs: [
-            {
-                id: '1',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-                path: '/pages/equip/detail'
-            },
-            {
-                id: '2',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-                path: '/pages/equip/detail'
-            }
-        ],
+        bannerImgs:[],
+        introduce_images:[],
         // 规格
         spec1: [
             {
@@ -53,6 +45,8 @@ Page({
         currentSpec:0,
         current2Spec:0,
         buyNumber:1,
+        equip_id:'',        // 装备id
+        equip_info:'',      // 装备信息
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -68,7 +62,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            equip_id: options.equip_id
+        })
+        this.getDetail(options.equip_id)
     },
 
     /**
@@ -180,6 +177,14 @@ Page({
             title: '暂不支持线上购买，可预约进店购买',
             icon:'none',
             duration:3000
+        })
+    },
+    // 获取装备详情
+    getDetail(equip_id) {
+        app.api.post('equip/Special/equip_detail', { equip_id: this.data.equip_id}).then(res=>{
+            this.setData({
+                equip_info:res.data
+            })
         })
     }
 })

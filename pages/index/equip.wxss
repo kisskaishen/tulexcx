@@ -61,6 +61,7 @@
 .menuList image {
     width: 120rpx;
     height: 120rpx;
+    border: 1rpx solid #eee;
     border-radius: 50%;
 }
 .menuList text {
@@ -120,7 +121,7 @@
     white-space: nowrap;
     color: red;
 }
-.goods .price text:last-child {
+.goods .price text.tm_price {
     font-size: 20rpx;
     text-decoration: line-through;
     color: #999;

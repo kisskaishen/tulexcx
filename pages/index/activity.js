@@ -1,4 +1,6 @@
 // pages/index/activity.js
+const app = getApp()
+
 Page({
 
     /**
@@ -10,13 +12,14 @@ Page({
             'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
             'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
         ],
+        list_info:'',           // 特卖专区列表
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.getList()
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -75,5 +78,13 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    // 获取特卖列表
+    getList() {
+        app.api.post('equip/special/special_selling').then(res=>{
+            this.setData({
+                list_info:res.data
+            })
+        })
     }
 })
