@@ -1,4 +1,5 @@
 // pages/pay/index.js
+const app = getApp();
 Page({
 
     /**
@@ -6,6 +7,8 @@ Page({
      */
     data: { 
         payType: 'equip',//来源equip为装备支付，ticket为景点门票
+        id:'',
+        info:{},
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -21,7 +24,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            id: options.ticket_id
+        })
+        this.getDetail()
     },
 
     /**
@@ -71,5 +77,24 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    // 先获取详情
+    getDetail() {
+        app.api.post('ticket/expert/ticket_detail', {
+            ticket_id: this.data.id
+        }).then(res => {
+            this.setData({
+                info: res.data
+            })
+        })
+    },
+    // 注意事项弹框
+    showAttention() {
+        wx.showModal({
+            title: '注意事项',
+            content: this.data.info.attention,
+            showCancel:false
+        })
     }
+
 })

@@ -1,7 +1,7 @@
 <!--pages/search/index.wxml-->
 <view class='container'>
     <view class='topSearch'>
-        <input placeholder="搜索景点名称,如焦作云台山、焦作、云台山" confirm-type="search" bindconfirm="search"></input>
+        <input value="{{searchVal}}" placeholder="搜索景点名称,如焦作云台山、焦作、云台山" confirm-type="search" bindconfirm="search"></input>
         <icon type='search' size='14'></icon>
     </view>
     <view class=''></view>

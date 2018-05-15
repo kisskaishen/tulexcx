@@ -27,13 +27,13 @@
 
     <view class='list'>
         <view class='tip'>推荐景点</view>
-        <view class='goods' wx:for="{{3}}" wx:key="{{item}}">
+        <view class='goods' wx:for="{{list}}" wx:key="{{item.ticket_id}}">
             <navigator url='/pages/detail/index'>
-                <image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'></image>
+                <image src='{{item.ticket_img}}'></image>
                 <view class='goodsText'>
-                    <text class='goodsName'>焦作云台山</text>
-                    <text>出发时间：2018-03-31</text>
-                    <text>剩余座位：20个</text>
+                    <text class='goodsName'>{{item.ticket_name}}</text>
+                    <text>出发时间：{{item.leave_date}}</text>
+                    <text>剩余座位：{{item.real_num}}个</text>
                 </view>
             </navigator>
         </view>

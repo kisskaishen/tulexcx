@@ -5,9 +5,9 @@
             <image src=''></image>
         </view>
         <view class='topInfo'>
-            <text class='name'>景点名称/装备名称</text>
-            <text class='price'>¥58.00</text>
-            <text class='tip'>注意事项</text>
+            <text class='name'>{{info.ticket_name}}</text>
+            <text class='price'>¥{{info.sale_price}}</text>
+            <text class='tip' bindtap='showAttention'>注意事项</text>
         </view>
     </view>
 

@@ -25,7 +25,23 @@ Page({
                 img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
                 path: '/pages/index/equip'                
             }
-        ]
+        ],
+        homeData:[],
+        list:[]             // 推荐景点列表
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        this.getIndex()
+        this.getList()
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -41,5 +57,23 @@ Page({
     // 查找方法
     search() {
 
-    }
+    },
+    // 获取首页信息
+    getIndex() {
+        app.api.post('Home/Home/home_index')
+            .then(res=>{
+                this.setData({
+                    homeData:res.data.list
+                })
+            })
+    },
+    // 推荐景点
+    getList() {
+        app.api.post('Home/Home/home_list')
+            .then(res => {
+                this.setData({
+                    list: res.data
+                })
+            })
+    },
 })

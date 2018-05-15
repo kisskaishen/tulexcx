@@ -75,7 +75,7 @@
     background-color: #fff;
     width: 320rpx;
     padding: 20rpx;
-    margin-top: 20rpx;
+    margin: 10rpx 0;
     position: relative;
 }
 
@@ -108,4 +108,9 @@
 .goodsName {
     font-weight: bold;
     font-size: 26rpx;
+}
+.hrText {
+    text-align: center;
+    color: #999;
+    margin-top: 40rpx;
 }

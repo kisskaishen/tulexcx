@@ -1,4 +1,5 @@
 // pages/detail/index.js
+const app = getApp();
 Page({
 
     /**
@@ -10,6 +11,8 @@ Page({
             'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
             'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
         ],
+        ticket_id:'',       // 获取门票id
+        ticket_info:{},     // 门票详情信息
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -26,7 +29,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            ticket_id: options.ticket_id
+        })
+        this.getDetail()
     },
 
     /**
@@ -76,5 +82,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    // 获取详情
+    getDetail() {
+        app.api.post('ticket/expert/ticket_detail',{
+            ticket_id: this.data.ticket_id
+        }).then(res=>{
+            console.log(res)
+            this.setData({
+                ticket_info:res.data
+            })
+        })
     }
 })

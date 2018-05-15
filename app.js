@@ -23,15 +23,13 @@ App({
                     wx.getUserInfo({
                         success: res => {
                             // 可以将 res 发送给后台解码出 unionId
-                            console.log('获取userInfo')
-                            console.log(res)
                             api.post('member/Wxapplet/get_applet_member',{
                                 code: this.globalData.code,
                                 encrypteddata: res.encryptedData,
                                 iv: res.iv                    
                             })
                             .then(res=>{
-                                console.log(res)
+                                
                             })
 
                             // 

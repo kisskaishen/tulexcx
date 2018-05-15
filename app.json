@@ -1,8 +1,9 @@
 {
     "pages": [
-        "pages/index/index",        
-        "pages/center/user",
+        "pages/index/index",
+        "pages/index/goodsList",        
         "pages/center/index",
+        "pages/center/user",
         "pages/index/activity",
         "pages/index/equip",
         "pages/equip/detail",
@@ -11,7 +12,6 @@
         "pages/pay/index",
         "pages/pay/address",
         "pages/detail/index",
-        "pages/index/goodsList",
         "pages/eval/index",
         "pages/search/index",
         "pages/logs/log"
