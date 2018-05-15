@@ -7,7 +7,14 @@
             <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
             <block wx:else>
                 <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+                <view>
+                    <view class="userinfo-nickname">昵称：{{userInfo.nickName}}</view>
+                    <view wx:if="{{tuleUser.realname}}">真实姓名：</view>
+                    <view wx:if="{{tuleUser.tel}}">手机号：</view>
+                    <view wx:else>
+                        <navigator url='/pages/center/user'>绑定信息</navigator>
+                    </view>
+                </view>
             </block>
         </view>
     </view>

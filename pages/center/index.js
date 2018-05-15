@@ -7,7 +7,8 @@ Page({
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),        
+        tuleUser:{},            // 注册会员绑定信息后得到的数据
         listData:[
             {
                 img:'/images/center.png',

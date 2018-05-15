@@ -12,6 +12,7 @@ App({
         wx.login({
             success: res => {
                 // 发送 res.code 到后台换取 openId, sessionKey, unionId
+                this.globalData.code = res.code
             }
         })
         // 获取用户信息
@@ -22,6 +23,18 @@ App({
                     wx.getUserInfo({
                         success: res => {
                             // 可以将 res 发送给后台解码出 unionId
+                            console.log('获取userInfo')
+                            console.log(res)
+                            api.post('member/Wxapplet/get_applet_member',{
+                                code: this.globalData.code,
+                                encrypteddata: res.encryptedData,
+                                iv: res.iv                    
+                            })
+                            .then(res=>{
+                                console.log(res)
+                            })
+
+                            // 
                             this.globalData.userInfo = res.userInfo
 
                             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -36,8 +49,8 @@ App({
         })
     },
     globalData: {
+        code:'',
         userInfo: null,
-        baseUrl:'https://jztule.com/api/public/index.php/'
     },
     api
 })

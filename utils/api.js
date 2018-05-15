@@ -1,6 +1,5 @@
-console.log('api封装页面')
 // var Promise = require('../plugins/promise.js');
-var baseUrl = 'https://jztule.com/api/public/index.php/';
+var baseUrl = 'https://api.jztule.com/public/index.php/';
 function post(url,data) {
     return new Promise((resolve,reject)=>{
         wx.request({

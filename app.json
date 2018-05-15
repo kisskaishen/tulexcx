@@ -1,19 +1,11 @@
 {
     "pages": [
-        "pages/index/index",
-        
+        "pages/index/index",        
+        "pages/center/user",
+        "pages/center/index",
         "pages/index/activity",
-        
         "pages/index/equip",
         "pages/equip/detail",
-        
-        
-        "pages/center/index",
-        
-        
-        
-        
-        
         "pages/center/orderDetail",
         "pages/center/order",
         "pages/pay/index",
@@ -29,7 +21,7 @@
         "navigationBarBackgroundColor": "#000",
         "navigationBarTitleText": "途乐户外",
         "navigationBarTextStyle": "#fff",
-        "enablePullDownRefresh":true
+        "enablePullDownRefresh": true
     },
     "tabBar": {
         "color": "#999",
