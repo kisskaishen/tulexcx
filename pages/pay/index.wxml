@@ -11,78 +11,49 @@
         </view>
     </view>
 
-    <view class='userView'>
-        <view class='userInfo contact'>
-            <text class='tipTxt'>联系人信息</text>
-            <view>
-                <label>手机号</label>
-                <input type="number" placeholder='用于接收确认信息'></input>
+    <view class='tipView'>
+        <text>应工信部要求，购买人必须绑定手机号</text>
+        <navigator url='/pages/center/user'>(点击绑定)</navigator>
+    </view>
+
+    <view class='userList'>
+        <view class='listTip'>快捷添加游客信息</view>
+        <view class='list'>
+            <view class="userInfoView {{activeNum==index?'active':''}}" bindtap='chooseUser' data-userInfo='{{item}}' data-index='{{index}}' wx:for="{{allUserInfo}}">
+                {{item.username}}
             </view>
-            <view>
-                <label>姓名</label>
-                <input type='text' placeholder='联系人姓名'></input>
+            <view class='addUser'>
+                +
             </view>
         </view>
+    </view>
 
-        <view class='userInfo visitor' wx:for="{{2}}">
-            <text class='tipTxt'>游客{{index+1}}信息</text>
+    <view class='userView'>
+        <view class='userInfo visitor' wx:for="{{userInfoList}}">
+            <text class='tipTxt'>{{item.username}}信息</text>
             <view>
                 <label>姓名</label>
-                <input type='text' placeholder='游客姓名'></input>
+                <text>{{item.username}}</text>
             </view>
             <view>
                 <label>手机号</label>
-                <input type="number" placeholder='请填写手机号'></input>
+                <text>{{item.usertel}}</text>
             </view>
 
             <view>
                 <label>身份证</label>
-                <input type='text' placeholder='游客身份证'></input>
+                <text>{{item.useridentity}}</text>
             </view>
-        </view>
-
-        <!-- <view class='addVisitorBtn'>
-            <text>添加游客</text>
-        </view> -->
+        </view>   
     </view>
-
-    <!-- <view class='equipView' wx:elif="{{payType == 'equip'}}">
-        <view class='address'>
-            <navigator url='/pages/pay/address'>
-                 <text>请填写收货地址</text> 
-                 <view>
-                    <text>姓名</text>
-                    <text>手机号</text>
-                </view>
-                <view>
-                    <text>地址</text>
-                </view> 
-            </navigator>
-        </view>
-        <view class='equipInfo'>
-            <view>
-                <text>配送快递</text>
-                <text>满299包邮</text>
-            </view>
-            <view>
-                <text>优惠券</text>
-                <text>暂无开放优惠券</text>
-            </view>
-            <view>
-                <text>买家留言</text>
-                <textarea></textarea>
-            </view>
-        </view>
-    </view> -->
-
-
+    
     <view class='footer'>
         <view class='footerMenu'>
             <view class='price'>
                 ¥58.00
             </view>
             <view class='buyBtn'>
-                <button type='warn'>支付</button>
+                <button type='warn' bindtap='toPay'>支付</button>
             </view>
         </view>
     </view>

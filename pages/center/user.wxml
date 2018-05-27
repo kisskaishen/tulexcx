@@ -2,7 +2,7 @@
 <view class='container'>
     <view class='userView'>
         <view class='userInfo'>
-            <text class='tipTxt'>基本信息</text>
+            <text class='tipTxt'>基本信息(必填)</text>
             <view class='contact'>
                 <view>
                     <label>手机号</label>
@@ -19,7 +19,7 @@
             </view>
         </view>
         <view class='userInfo'>
-            <text class='tipTxt'>紧急联系人</text>
+            <text class='tipTxt'>紧急联系人(选填)</text>
             <view class='contact'>
                 <view>
                     <label>手机号</label>

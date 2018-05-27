@@ -7,8 +7,28 @@ Page({
      */
     data: { 
         payType: 'equip',//来源equip为装备支付，ticket为景点门票
+        allUserInfo:[
+            {
+                username:'秦文凯',
+                usertel:'13798238693',
+                userIdentity:'41823199510240078'
+            },
+            {
+                username: '秦文凯2',
+                usertel: '13798238693',
+                userIdentity: '41823199510240078'
+            },
+            {
+                username: '秦文凯3',
+                usertel: '13798238693',
+                useridentity: '41823199510240078'
+            }
+        ],
         id:'',
         info:{},
+        // activeNum:'',       // 选中游客信息
+        userInfoList:[],        // 选中游客信息列表
+        code: ''        
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -95,6 +115,48 @@ Page({
             content: this.data.info.attention,
             showCancel:false
         })
+    },
+    // 选择添加联系人信息
+    chooseUser(e) {
+        let that = this;
+        console.log(e)
+        console.log(that.data.userInfoList)
+        console.log(e.target.dataset.userinfo)
+        that.setData({
+            userInfoList: that.data.userInfoList.push(e.target.dataset.userinfo)
+        })
+        console.log(that.data.userInfoList)
+        // if (e.target.dataset.index != this.data.activeNum) {
+        //     console.log('==,')
+        //     this.setData({
+        //         activeNum: e.target.dataset.index
+        //     })
+        // } else {
+        //     console.log('!=')
+        //     this.setData({
+        //         activeNum: '-1'
+        //     })
+        // }
+    },
+    // 立即支付
+    toPay() {
+        let that = this;
+        wx.login({
+            success: function (res) {
+                that.setData({
+                    code: res.code
+                })
+                app.api.post('order/buy/WeixinRequest', {
+                    order_amount: '1',
+                    order_sn: '20180500000021012244',
+                    code: that.data.code
+                }).then(res => {
+                    console.log(res)
+                })
+            }
+        })
+        
+        // wx.requestPayment()
     }
 
 })

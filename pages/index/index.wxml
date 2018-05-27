@@ -5,7 +5,7 @@
     </view> -->
 
     <view class='banner'>
-        <swiper indicator-dots autoplay interval='4000' duration="1000">
+        <swiper indicator-dots autoplay interval='4000' duration="1000" circular>
             <block wx:for="{{imgUrls}}" wx:key="{{item}}">
                 <swiper-item>
                     <navigator url='/pages/detail/index'>
@@ -28,7 +28,7 @@
     <view class='list'>
         <view class='tip'>推荐景点</view>
         <view class='goods' wx:for="{{list}}" wx:key="{{item.ticket_id}}">
-            <navigator url='/pages/detail/index'>
+            <navigator url='/pages/detail/index?ticket_id={{item.ticket_id}}'>
                 <image src='{{item.ticket_img}}'></image>
                 <view class='goodsText'>
                     <text class='goodsName'>{{item.ticket_name}}</text>
