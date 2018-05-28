@@ -148,7 +148,7 @@ Page({
                 })
                 app.api.post('order/buy/WeixinRequest', {
                     order_amount: '1',
-                    pay_sn: '20180500000021012244',
+                    pay_sn: '570580347858754001',
                     code: that.data.code
                 }).then(res => {
                     console.log(res)
