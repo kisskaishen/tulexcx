@@ -147,15 +147,19 @@ Page({
                     code: res.code
                 })
                 app.api.post('order/buy/WeixinRequest', {
-                    order_amount: '1',
+                    order_amount: '0.01',
                     pay_sn: '570580347858754001',
                     code: that.data.code
                 }).then(res => {
-                    console.log(res)
+                    wx.showToast({
+                        title: '支付中',
+                        icon: 'loading',
+                        duration: 1000
+                    })
                     wx.requestPayment({
                         'timeStamp': res.data.timestamp.toString(),
                         'nonceStr': res.data.noncestr,
-                        'package': res.data.package,
+                        'package': 'prepay_id=' + res.data.prepayid,
                         'signType': 'MD5',
                         'paySign': res.data.paysign,
                         'success': function (res) {
