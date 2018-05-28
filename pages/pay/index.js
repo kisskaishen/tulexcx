@@ -5,13 +5,13 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: { 
+    data: {
         payType: 'equip',//来源equip为装备支付，ticket为景点门票
-        allUserInfo:[
+        allUserInfo: [
             {
-                username:'秦文凯',
-                usertel:'13798238693',
-                userIdentity:'41823199510240078'
+                username: '秦文凯',
+                usertel: '13798238693',
+                userIdentity: '41823199510240078'
             },
             {
                 username: '秦文凯2',
@@ -24,11 +24,11 @@ Page({
                 useridentity: '41823199510240078'
             }
         ],
-        id:'',
-        info:{},
+        id: '',
+        info: {},
         // activeNum:'',       // 选中游客信息
-        userInfoList:[],        // 选中游客信息列表
-        code: ''        
+        userInfoList: [],        // 选中游客信息列表
+        code: ''
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -113,7 +113,7 @@ Page({
         wx.showModal({
             title: '注意事项',
             content: this.data.info.attention,
-            showCancel:false
+            showCancel: false
         })
     },
     // 选择添加联系人信息
@@ -148,15 +148,28 @@ Page({
                 })
                 app.api.post('order/buy/WeixinRequest', {
                     order_amount: '1',
-                    order_sn: '20180500000021012244',
+                    pay_sn: '20180500000021012244',
                     code: that.data.code
                 }).then(res => {
                     console.log(res)
+                    wx.requestPayment({
+                        'timeStamp': res.data.timestamp.toString(),
+                        'nonceStr': res.data.noncestr,
+                        'package': res.data.package,
+                        'signType': 'MD5',
+                        'paySign': res.data.paysign,
+                        'success': function (res) {
+                            console.log(res)
+                        },
+                        'fail': function (res) {
+                            console.log(res)
+                        }
+                    })
+
                 })
             }
         })
-        
-        // wx.requestPayment()
+
     }
 
 })
