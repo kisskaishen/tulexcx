@@ -19,7 +19,7 @@
     <view class='userList'>
         <view class='listTip'>快捷添加游客信息</view>
         <view class='list'>
-            <view class="userInfoView {{activeNum==index?'active':''}}" bindtap='chooseUser' data-userInfo='{{item}}' data-index='{{index}}' wx:for="{{allUserInfo}}">
+            <view class="userInfoView {{activeNum==index?'active':''}}" bindtap='chooseUser' data-userInfo='{{item}}' data-index='{{index}}' wx:for="{{allUserInfo}}" wx:key="{{index}}">
                 {{item.username}}
             </view>
             <view class='addUser'>
@@ -29,7 +29,7 @@
     </view>
 
     <view class='userView'>
-        <view class='userInfo visitor' wx:for="{{userInfoList}}">
+        <view class='userInfo visitor' wx:for="{{userInfoList}}" wx:key="{{index}}">
             <text class='tipTxt'>{{item.username}}信息</text>
             <view>
                 <label>姓名</label>
