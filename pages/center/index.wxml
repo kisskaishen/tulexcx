@@ -4,7 +4,7 @@
     <view class="userinfo">
         <image src='../../images/user_bg.jpg' class='user_bg'></image>
         <view class='userinfoTop'>
-            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+            <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"> 获取头像昵称 </button>
             <block wx:else>
                 <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
                 <view>

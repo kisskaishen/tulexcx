@@ -1,0 +1,24 @@
+/* pages/pay/addUser.wxss */
+.contact {
+    background-color: #fff
+}
+.contact > view {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.contact > view label {
+    width: 180rpx;
+    text-align: right;
+}
+.contact > view input {
+    padding: 20rpx;
+    border-bottom:1rpx dashed #ccc;
+    flex: 1;
+}
+
+.sureBtn {
+    position: fixed;
+    bottom: 0;
+}

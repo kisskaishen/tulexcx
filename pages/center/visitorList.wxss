@@ -1,0 +1,42 @@
+/* pages/center/visitorList.wxss */
+.list {
+    background-color: #fff;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.list .listAll {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.list .listAll .listImg {
+    
+}
+.list .listAll .listImg image {
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+}
+
+.list .listAll .listInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.list .listAll .listInfo text {
+    display: block;
+    width: 100%;
+    padding: 10rpx;
+}
+.list .listDelete image {
+    width: 60rpx;
+    height: 60rpx;
+}

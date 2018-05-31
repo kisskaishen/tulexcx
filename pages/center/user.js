@@ -1,73 +1,57 @@
 // pages/center/user.js
+const app = getApp()
 Page({
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
-  
-  },
+    /**
+     * 页面的初始数据
+     */
+    data: {
+        member_id:'',
+        member_mobile:'',
+    },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        wx.getStorage({
+            key: 'userInfo',
+            success: function(res) {
+                this.setData({
+                    member_id: res.data.member_id
+                })
+            },
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
+    },
+    mobileInput(e) {
+        this.setData({
+            member_mobile:e.detail.value
+        })
+    },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
-
-  // 提交
-  submit() {
-      wx.switchTab({
-          url: '/pages/center/index',
-      })
-  }
+    // 提交
+    submit() {
+        app.api.post('member/Member/bind_mobile', {
+            member_id: this.data.member_id,
+            member_mobile: this.data.member_mobile,
+        }).then(res=>{
+            wx.showToast({
+                title: '绑定成功',
+                icon: 'success',
+                duration: 1200
+            })
+            setTimeout(()=>{
+                wx.navigateBack(1)
+            },1400)
+            
+        })
+       
+    }
 })

@@ -1,11 +1,13 @@
 {
     "pages": [
-        "pages/pay/index",
+        "pages/center/visitorList",
+        "pages/center/index",
         
         "pages/index/index",
-        "pages/index/goodsList",        
-        "pages/center/index",
         "pages/center/user",
+        "pages/pay/index",
+        "pages/pay/addUser",
+        "pages/index/goodsList",
         "pages/index/activity",
         "pages/index/equip",
         "pages/equip/detail",

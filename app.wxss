@@ -9,6 +9,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     background-color: #f2f2f2;
+    margin-bottom: 100rpx;
 }
 .container > view {
     width: 100%;

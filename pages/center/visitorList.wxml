@@ -1,0 +1,23 @@
+<!--pages/center/visitorList.wxml-->
+<view class='container'>
+    <view class='list' wx:for="{{3}}">
+        <view class='listAll'>
+            <view class='listImg'>
+                <image src='/images/group.png'></image>
+            </view>
+            <view class='listInfo'>
+                <text>游客姓名</text>
+                <text>游客电话</text>
+                <text>游客身份证</text>
+            </view>
+        </view>
+        <view class='listDelete'>
+            <image src='/images/delete.png'></image>
+        </view>
+    </view>
+    <view class='addUser'>
+        <navigator url='/pages/pay/addUser'>
+            <button type='primary'>新增游客信息</button>
+        </navigator>
+    </view>
+</view>

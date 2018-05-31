@@ -19,17 +19,24 @@
     <view class='userList'>
         <view class='listTip'>快捷添加游客信息</view>
         <view class='list'>
-            <view class="userInfoView {{activeNum==index?'active':''}}" bindtap='chooseUser' data-userInfo='{{item}}' data-index='{{index}}' wx:for="{{allUserInfo}}" wx:key="{{index}}">
+              <view class="userInfoView {{item.state==true?'active':''}}" bindtap='chooseUser' data-userInfo='{{item}}' data-key='{{index}}' wx:for="{{allUserInfo}}" wx:key="{{index}}">
                 {{item.username}}
-            </view>
+            </view>  
+             <!-- <checkbox-group bindchange="chooseUser">
+                <label class="checkbox" wx:for="{{allUserInfo}}">
+                    <checkbox value="{{item.userIdentity}}" checked="{{item.state}}" />{{item.username}}
+                </label>
+            </checkbox-group>  -->
             <view class='addUser'>
+                <navigator url='/pages/pay/addUser'>
                 +
+                </navigator>
             </view>
         </view>
     </view>
 
     <view class='userView'>
-        <view class='userInfo visitor' wx:for="{{userInfoList}}" wx:key="{{index}}">
+        <view class='userInfo visitor' wx:for="{{allUserInfo}}" wx:key="{{index}}" wx:if="{{item.state==true}}">
             <text class='tipTxt'>{{item.username}}信息</text>
             <view>
                 <label>姓名</label>
@@ -42,15 +49,15 @@
 
             <view>
                 <label>身份证</label>
-                <text>{{item.useridentity}}</text>
+                <text>{{item.userIdentity}}</text>
             </view>
-        </view>   
+        </view>
     </view>
-    
+
     <view class='footer'>
         <view class='footerMenu'>
             <view class='price'>
-                ¥58.00
+                ¥58.00 * 2
             </view>
             <view class='buyBtn'>
                 <button type='warn' bindtap='toPay'>支付</button>

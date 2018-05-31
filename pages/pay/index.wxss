@@ -82,11 +82,15 @@
     font-size: 26rpx;
 }
 .userList .list .addUser {
-    padding: 10rpx 20px;
     border: 2rpx solid #ccc;
     border-radius: 4rpx;
     margin-right: 20rpx;
     font-size: 26rpx;
+}
+.userList .list .addUser navigator {
+    display: block;
+    padding: 10rpx 20px;
+
 }
 .userList .list .active {
     border:2rpx solid red;

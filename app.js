@@ -29,7 +29,11 @@ App({
                                 iv: res.iv                    
                             })
                             .then(res=>{
-                                
+                                wx.setStorage({
+                                    key: 'userInfo',
+                                    data: res.data,
+                                })
+
                             })
 
                             // 

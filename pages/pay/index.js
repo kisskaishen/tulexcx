@@ -11,22 +11,25 @@ Page({
             {
                 username: '秦文凯',
                 usertel: '13798238693',
-                userIdentity: '41823199510240078'
+                userIdentity: '41823199510240076',
+                state: false
             },
             {
                 username: '秦文凯2',
                 usertel: '13798238693',
-                userIdentity: '41823199510240078'
+                userIdentity: '41823199510240077',
+                state: false
             },
             {
                 username: '秦文凯3',
                 usertel: '13798238693',
-                useridentity: '41823199510240078'
+                userIdentity: '41823199510240078',
+                state: false
             }
         ],
         id: '',
         info: {},
-        // activeNum:'',       // 选中游客信息
+        // stateNum:'',       // 选中游客信息
         userInfoList: [],        // 选中游客信息列表
         code: ''
     },
@@ -48,6 +51,7 @@ Page({
             id: options.ticket_id
         })
         this.getDetail()
+        this.getVisitList()
     },
 
     /**
@@ -116,27 +120,29 @@ Page({
             showCancel: false
         })
     },
+    // 获取游客列表
+    getVisitList() {
+        app.api.post('member/Visiter/visiter_list', {
+            member_id: ''
+        }).then(res => {
+            this.setData({
+                allUserInfo: res.list
+            })
+        })
+    },
     // 选择添加联系人信息
     chooseUser(e) {
-        let that = this;
-        console.log(e)
-        console.log(that.data.userInfoList)
-        console.log(e.target.dataset.userinfo)
-        that.setData({
-            userInfoList: that.data.userInfoList.push(e.target.dataset.userinfo)
+        let index = e.currentTarget.dataset.key
+        let tags = this.data.allUserInfo
+        tags[index].state = !tags[index].state
+        this.setData({
+            allUserInfo: tags
         })
-        console.log(that.data.userInfoList)
-        // if (e.target.dataset.index != this.data.activeNum) {
-        //     console.log('==,')
-        //     this.setData({
-        //         activeNum: e.target.dataset.index
-        //     })
-        // } else {
-        //     console.log('!=')
-        //     this.setData({
-        //         activeNum: '-1'
-        //     })
-        // }
+        for (var i = 0; i < this.data.allUserInfo.length; i++) {
+            if (this.data.allUserInfo[i].state == true) {
+                console.log(this.data.allUserInfo.length)
+            }
+        }
     },
     // 立即支付
     toPay() {

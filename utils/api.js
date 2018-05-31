@@ -1,6 +1,7 @@
 // var Promise = require('../plugins/promise.js');
 var baseUrl = 'https://api.jztule.com/public/index.php/';
-function post(url,data) {
+
+function post(url, data) {
     return new Promise((resolve,reject)=>{
         wx.request({
             url: baseUrl + url,
