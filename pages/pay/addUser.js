@@ -16,10 +16,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let self = this
         wx.getStorage({
             key: 'userInfo',
             success: function (res) {
-                this.setData({
+                self.setData({
                     member_id: res.data.member_id
                 })
             },
@@ -51,22 +52,44 @@ Page({
 
     // 确定
     sureBtn() {
-        app.api.post('member/Visiter/visiter_add', {
-            member_id: this.data.member_id,
-            visit_name: this.data.visit_name,
-            visit_phone: this.data.visit_phone,
-            vist_idcard_num: this.data.vist_idcard_num,
-        }).then(res => {
-            console.log(res)
+        let self = this;
+
+        if (self.data.visit_name == '') {
             wx.showToast({
-                title: '添加成功',
-                icon: 'success',
+                title: '姓名不能为空',
+                image: '/images/icon-error.png',
                 duration: 1200
             })
-            setTimeout(() => {
-                wx.navigateBack(1)
-            }, 1400)
-        })
+        } else if (self.data.visit_phone == '') {
+            wx.showToast({
+                title: '手机号不能为空',
+                image: '/images/icon-error.png',
+                duration: 1200
+            })
+        } else if (self.data.vist_idcard_num == '') {
+            wx.showToast({
+                title: '身份证不能为空',
+                image: '/images/icon-error.png',
+                duration: 1200
+            })
+        } else {
+            app.api.post('member/Visiter/visiter_add', {
+                member_id: self.data.member_id,
+                visit_name: self.data.visit_name,
+                visit_phone: self.data.visit_phone,
+                vist_idcard_num: self.data.vist_idcard_num,
+            }).then(res => {
+                wx.showToast({
+                    title: '添加成功',
+                    icon: 'success',
+                    duration: 1200
+                })
+                setTimeout(() => {
+                    wx.navigateBack(1)
+                }, 1400)
+            })
+        }
+
 
     }
 })

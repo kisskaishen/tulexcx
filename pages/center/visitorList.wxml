@@ -1,18 +1,18 @@
 <!--pages/center/visitorList.wxml-->
 <view class='container'>
-    <view class='list' wx:for="{{3}}">
+    <view class='list' wx:for="{{visitorList}}" wx:key="{{index}}">
         <view class='listAll'>
             <view class='listImg'>
                 <image src='/images/group.png'></image>
             </view>
             <view class='listInfo'>
-                <text>游客姓名</text>
-                <text>游客电话</text>
-                <text>游客身份证</text>
+                <text>{{item.visit_name}}</text>
+                <text>{{item.visit_phone}}</text>
+                <text>{{item.vist_idcard_num}}</text>
             </view>
         </view>
         <view class='listDelete'>
-            <image src='/images/delete.png'></image>
+            <image src='/images/delete.png' data-item="{{item}}" data-index="{{index}}" bindtap='visitorDelete'></image>
         </view>
     </view>
     <view class='addUser'>

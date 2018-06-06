@@ -89,7 +89,6 @@ Page({
         app.api.post('ticket/expert/ticket_detail',{
             ticket_id: this.data.ticket_id
         }).then(res=>{
-            console.log(res)
             this.setData({
                 ticket_info:res.data
             })

@@ -1,9 +1,10 @@
 {
     "pages": [
+        "pages/index/index",
+        
         "pages/center/visitorList",
         "pages/center/index",
         
-        "pages/index/index",
         "pages/center/user",
         "pages/pay/index",
         "pages/pay/addUser",

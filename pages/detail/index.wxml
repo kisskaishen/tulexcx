@@ -20,7 +20,7 @@
             </view>
             <view class='infoFr'>
                 <text>¥{{ticket_info.sale_price}}</text>
-                <navigator url='/pages/pay/index?payType=ticket&ticket_id={{ticket_info.ticket_id}}'>
+                <navigator url='/pages/pay/index?ticket_id={{ticket_info.ticket_id}}'>
                     <button type='warn' size='mini'>
                         预订
                     </button>

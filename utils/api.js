@@ -11,11 +11,15 @@ function post(url, data) {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             success:function(res) {
+                wx.showLoading({
+                    title: '加载中',
+                })
                 if (res.data.code == '200') {
+                    wx.hideLoading()
                     resolve(res.data)
                 } else {
-                    console.log('调用了接口，但不是200')
-                    reject({ error: '服务器忙，请稍后重试', code: 500 });
+                    wx.hideLoading()
+                    reject({ error: '调用了接口，但不是200', code: '!'+200 });
                     return;
                 }
             },

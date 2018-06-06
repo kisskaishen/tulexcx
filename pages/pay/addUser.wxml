@@ -11,7 +11,7 @@
         </view>
         <view>
             <label>身份证号</label>
-            <input type='text' placeholder='您的身份证号' bindinput='idCardChange'></input>
+            <input type='text' placeholder='您的身份证号(用于购买保险)' bindinput='idCardChange'></input>
         </view>
     </view>
     <view class='sureBtn'>

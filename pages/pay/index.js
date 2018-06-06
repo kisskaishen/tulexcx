@@ -6,35 +6,44 @@ Page({
      * 页面的初始数据
      */
     data: {
-        payType: 'equip',//来源equip为装备支付，ticket为景点门票
-        allUserInfo: [
-            {
-                username: '秦文凯',
-                usertel: '13798238693',
-                userIdentity: '41823199510240076',
-                state: false
-            },
-            {
-                username: '秦文凯2',
-                usertel: '13798238693',
-                userIdentity: '41823199510240077',
-                state: false
-            },
-            {
-                username: '秦文凯3',
-                usertel: '13798238693',
-                userIdentity: '41823199510240078',
-                state: false
-            }
-        ],
+        visitorList: [],
         id: '',
+        member_id:'',
         info: {},
-        // stateNum:'',       // 选中游客信息
         userInfoList: [],        // 选中游客信息列表
-        code: ''
+        code: '',
     },
-    // 下拉刷新
-    onPullDownRefresh() {
+
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+        let self = this;
+        wx.getStorage({
+            key: 'userInfo',
+            success: function (res) {
+                self.setData({
+                    id: options.ticket_id,                    
+                    member_id: res.data.member_id
+                })              
+                self.getDetail()
+                self.getVisitor()        
+            },
+        })
+        
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {
+        
+    },
+
+    /**
+     * 页面相关事件处理函数--监听用户下拉动作
+     */
+    onPullDownRefresh: function () {
         wx.showNavigationBarLoading()
         console.log('开始刷新')
         setTimeout(() => {
@@ -42,51 +51,6 @@ Page({
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
         }, 1000)
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        this.setData({
-            id: options.ticket_id
-        })
-        this.getDetail()
-        this.getVisitList()
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
     },
 
     /**
@@ -96,19 +60,26 @@ Page({
 
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
     // 先获取详情
     getDetail() {
+        let self = this
         app.api.post('ticket/expert/ticket_detail', {
-            ticket_id: this.data.id
+            ticket_id: self.data.id
         }).then(res => {
-            this.setData({
+            self.setData({
                 info: res.data
+            })
+        })
+    },
+
+    // 获取游客列表
+    getVisitor() {
+        let self = this
+        app.api.post('member/Visiter/visiter_list', {
+            member_id: self.data.member_id
+        }).then(res => {
+            self.setData({
+                visitorList: res.data
             })
         })
     },
@@ -118,16 +89,6 @@ Page({
             title: '注意事项',
             content: this.data.info.attention,
             showCancel: false
-        })
-    },
-    // 获取游客列表
-    getVisitList() {
-        app.api.post('member/Visiter/visiter_list', {
-            member_id: ''
-        }).then(res => {
-            this.setData({
-                allUserInfo: res.list
-            })
         })
     },
     // 选择添加联系人信息
