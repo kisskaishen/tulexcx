@@ -5,7 +5,7 @@
     </view>
 
     <view class='list'>
-        <navigator url='/pages/center/orderDetail?payType={{payType}}' class='goods' wx:for="{{6}}" wx:key="{{item}}">
+        <navigator url='/pages/center/orderDetail?payType={{payType}}' class='goods' wx:for="{{orderList}}" wx:key="{{item}}">
             <view class='goodsImg'>
                 <image src=''></image>
             </view>

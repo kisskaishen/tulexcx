@@ -6,7 +6,7 @@
         </view>
         <view class='topInfo'>
             <text class='name'>{{info.ticket_name}}</text>
-            <text class='price'>¥{{info.sale_price}}</text>
+            <text class='price'>¥{{info.price}}</text>
             <text class='tip' bindtap='showAttention'>注意事项</text>
         </view>
     </view>
@@ -52,7 +52,8 @@
     <view class='footer'>
         <view class='footerMenu'>
             <view class='price'>
-                ¥58.00 * 2
+                <text>¥{{info.price}} </text>
+                <text wx:if="{{userInfoListLength!='0'}}">*{{userInfoListLength}}</text>
             </view>
             <view class='buyBtn'>
                 <button type='warn' bindtap='toPay'>支付</button>

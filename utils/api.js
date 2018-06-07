@@ -19,6 +19,10 @@ function post(url, data) {
                     resolve(res.data)
                 } else {
                     wx.hideLoading()
+                    wx.showToast({
+                        title: res.data.message,
+                        image:'/images/icon-error.png'
+                    })
                     reject({ error: '调用了接口，但不是200', code: '!'+200 });
                     return;
                 }

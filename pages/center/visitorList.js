@@ -68,7 +68,15 @@ Page({
             content: '确定要删除此联系人' + e.target.dataset.item.visit_name + '么？',
             success: function (res) {
                 if (res.confirm) {
-                    console.log('调用删除接口')
+                    console.log(e)
+                    app.api.post('member/Visiter/visiter_del',{
+                        visit_id:e.target.dataset.item.visit_id
+                    }).then(res=>{
+                        wx.showToast({
+                            title: res.message,
+                            icon:'success'
+                        })
+                    })
                     let list = self.data.visitorList
                     list.splice(e.target.dataset.index, 1)
                     self.setData({

@@ -14,10 +14,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let self =this;
         wx.getStorage({
             key: 'userInfo',
             success: function(res) {
-                this.setData({
+                self.setData({
                     member_id: res.data.member_id
                 })
             },

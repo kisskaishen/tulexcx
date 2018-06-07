@@ -12,7 +12,7 @@ Page({
         listData:[
             {
                 img:'/images/index.png',
-                name:'景点订单',
+                name:'订单订单',
                 path:'/pages/center/order?payType=tickets'
             },
             {

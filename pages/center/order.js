@@ -1,4 +1,5 @@
 // pages/center/order.js
+const app = getApp()
 Page({
 
     /**
@@ -7,21 +8,23 @@ Page({
     data: {
         navs: [
             {
-                id: '1',
+                id: '',
                 name: '全部订单'
             },
             {
-                id: '2',
+                id: '20',
                 name: '已支付订单'
             },
             {
-                id: '3',
-                name: '已评价订单'
+                id: '10',
+                name: '待支付订单'
             }
         ],
-        navIndexId: '1',//当前
+        navIndexId: '',//当前
         // 参数
         payType: '',
+        member_id:'',
+        orderList:[],
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -37,37 +40,26 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let that = this
-        that.setData({
+        let self = this
+        self.setData({
             payType: options.payType
         })
+        wx.getStorage({
+            key: 'userInfo',
+            success: function (res) {
+                self.setData({
+                    member_id: res.data.member_id
+                })
+                self.getOrder(self.data.navIndexId)
+            },
+        })
+        
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
 
     },
 
@@ -85,17 +77,23 @@ Page({
 
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    },
-
     // 点击nav选择
     navClick(e) {
         this.setData({
             navIndexId: e.target.dataset.id
+        })
+        this.getOrder(this.data.navIndexId)
+    },
+
+    // 订单列表
+    getOrder(type) {
+        app.api.post('order/Order/order_list',{
+            member_id:this.data.member_id,
+            order_state:type || ''
+        }).then(res=>{
+            this.setData({
+                orderList:res.data
+            })
         })
     }
 })

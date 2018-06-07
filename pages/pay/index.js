@@ -8,9 +8,10 @@ Page({
     data: {
         visitorList: [],
         id: '',
-        member_id:'',
+        member_id: '',
         info: {},
         userInfoList: [],        // 选中游客信息列表
+        userInfoListLength:0,   
         code: '',
     },
 
@@ -23,21 +24,21 @@ Page({
             key: 'userInfo',
             success: function (res) {
                 self.setData({
-                    id: options.ticket_id,                    
+                    id: options.ticket_id,
                     member_id: res.data.member_id
-                })              
+                })
                 self.getDetail()
                 self.getVisitor()        
             },
         })
-        
+
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        
+
     },
 
     /**
@@ -94,16 +95,21 @@ Page({
     // 选择添加联系人信息
     chooseUser(e) {
         let index = e.currentTarget.dataset.key
-        let tags = this.data.allUserInfo
+        let tags = this.data.visitorList
         tags[index].state = !tags[index].state
         this.setData({
-            allUserInfo: tags
+            visitorList: tags
         })
-        for (var i = 0; i < this.data.allUserInfo.length; i++) {
-            if (this.data.allUserInfo[i].state == true) {
-                console.log(this.data.allUserInfo.length)
+        let userInfoListTags = new Set()            // es6 去重
+        for (var i = 0; i < this.data.visitorList.length; i++) {
+            if (this.data.visitorList[i].state == true) {
+                userInfoListTags.add(this.data.visitorList[i])
             }
         }
+        this.setData({
+            userInfoList: userInfoListTags,
+            userInfoListLength: userInfoListTags.size
+        })
     },
     // 立即支付
     toPay() {

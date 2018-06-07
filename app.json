@@ -1,5 +1,7 @@
 {
     "pages": [
+        "pages/center/orderDetail",
+        
         "pages/index/index",
         
         "pages/center/visitorList",
@@ -12,7 +14,6 @@
         "pages/index/activity",
         "pages/index/equip",
         "pages/equip/detail",
-        "pages/center/orderDetail",
         "pages/center/order",
         "pages/pay/address",
         "pages/detail/index",
