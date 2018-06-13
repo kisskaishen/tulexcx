@@ -7,12 +7,13 @@ Page({
      */
     data: {
         visitorList: [],
-        id: '',
+        ticket_id: '',      // 门票id
         member_id: '',
         info: {},
         userInfoList: [],        // 选中游客信息列表
-        userInfoListLength:0,   
+        userInfoListLength: 0,
         code: '',
+        visit_id_arr: [],        // 选中游客id
     },
 
     /**
@@ -24,11 +25,11 @@ Page({
             key: 'userInfo',
             success: function (res) {
                 self.setData({
-                    id: options.ticket_id,
+                    ticket_id: options.ticket_id,
                     member_id: res.data.member_id
                 })
                 self.getDetail()
-                self.getVisitor()        
+                self.getVisitor()
             },
         })
 
@@ -65,7 +66,7 @@ Page({
     getDetail() {
         let self = this
         app.api.post('ticket/expert/ticket_detail', {
-            ticket_id: self.data.id
+            ticket_id: self.data.ticket_id
         }).then(res => {
             self.setData({
                 info: res.data
@@ -100,52 +101,76 @@ Page({
         this.setData({
             visitorList: tags
         })
+        
         let userInfoListTags = new Set()            // es6 去重
+        let visit_id_arr = []
+        
         for (var i = 0; i < this.data.visitorList.length; i++) {
             if (this.data.visitorList[i].state == true) {
                 userInfoListTags.add(this.data.visitorList[i])
+                visit_id_arr.push(this.data.visitorList[i].visit_id)
             }
         }
+        
+        console.log(Array.from(visit_id_arr))
         this.setData({
             userInfoList: userInfoListTags,
-            userInfoListLength: userInfoListTags.size
+            userInfoListLength: userInfoListTags.size,
+            visit_id_arr: visit_id_arr,
         })
     },
     // 立即支付
     toPay() {
         let that = this;
-        wx.login({
-            success: function (res) {
-                that.setData({
-                    code: res.code
-                })
-                app.api.post('order/buy/WeixinRequest', {
-                    order_amount: '0.01',
-                    pay_sn: '570580347858754001',
-                    code: that.data.code
-                }).then(res => {
-                    wx.showToast({
-                        title: '支付中',
-                        icon: 'loading',
-                        duration: 1000
-                    })
-                    wx.requestPayment({
-                        'timeStamp': res.data.timestamp.toString(),
-                        'nonceStr': res.data.noncestr,
-                        'package': 'prepay_id=' + res.data.prepayid,
-                        'signType': 'MD5',
-                        'paySign': res.data.paysign,
-                        'success': function (res) {
-                            console.log(res)
-                        },
-                        'fail': function (res) {
-                            console.log(res)
-                        }
-                    })
+        if (that.data.userInfoListLength == '0' || that.data.visit_id_arr == '') {
+            wx.showToast({
+                title: '请先选择游客',
+                image: '/images/icon-tips.png',
+                duration: 1600
+            })
+        } else {
+            app.api.post('order/buy/submit_order', {
+                cart_id: that.data.ticket_id +'|'+ that.data.userInfoListLength,
+                member_id: that.data.member_id,
+                visit_id_arr: that.data.visit_id_arr
+            }).then(res => {
+                console.log(res)
+            })
+        }
 
-                })
-            }
-        })
+        
+        // wx.login({
+        //     success: function (res) {
+        //         that.setData({
+        //             code: res.code
+        //         })
+        //         app.api.post('order/buy/WeixinRequest', {
+        //             order_amount: '',
+        //             pay_sn: '',
+        //             code: that.data.code
+        //         }).then(res => {
+        //             wx.showToast({
+        //                 title: '支付中',
+        //                 icon: 'loading',
+        //                 duration: 1000
+        //             })
+        //             wx.requestPayment({
+        //                 'timeStamp': res.data.timestamp.toString(),
+        //                 'nonceStr': res.data.noncestr,
+        //                 'package': 'prepay_id=' + res.data.prepayid,
+        //                 'signType': 'MD5',
+        //                 'paySign': res.data.paysign,
+        //                 'success': function (res) {
+        //                     console.log(res)
+        //                 },
+        //                 'fail': function (res) {
+        //                     console.log(res)
+        //                 }
+        //             })
+
+        //         })
+        //     }
+        // })
 
     }
 

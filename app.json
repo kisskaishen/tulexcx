@@ -1,8 +1,9 @@
 {
     "pages": [
+        "pages/index/index",
+        
         "pages/center/orderDetail",
         
-        "pages/index/index",
         
         "pages/center/visitorList",
         "pages/center/index",
