@@ -14,6 +14,7 @@ Page({
         userInfoListLength: 0,
         code: '',
         visit_id_arr: [],        // 选中游客id
+        orderInfo: {},           // 下单成功后的订单信息
     },
 
     /**
@@ -101,22 +102,23 @@ Page({
         this.setData({
             visitorList: tags
         })
-        
+
+
+
+        // 取数量
         let userInfoListTags = new Set()            // es6 去重
         let visit_id_arr = []
-        
         for (var i = 0; i < this.data.visitorList.length; i++) {
             if (this.data.visitorList[i].state == true) {
                 userInfoListTags.add(this.data.visitorList[i])
                 visit_id_arr.push(this.data.visitorList[i].visit_id)
             }
         }
-        
-        console.log(Array.from(visit_id_arr))
+
         this.setData({
             userInfoList: userInfoListTags,
             userInfoListLength: userInfoListTags.size,
-            visit_id_arr: visit_id_arr,
+            visit_id_arr: visit_id_arr
         })
     },
     // 立即支付
@@ -130,48 +132,63 @@ Page({
             })
         } else {
             app.api.post('order/buy/submit_order', {
-                cart_id: that.data.ticket_id +'|'+ that.data.userInfoListLength,
+                cart_id: that.data.ticket_id + '|' + that.data.userInfoListLength,
                 member_id: that.data.member_id,
-                visit_id_arr: that.data.visit_id_arr
+                union_type: '1',
+                visit_id_arr: JSON.stringify(that.data.visit_id_arr)
             }).then(res => {
-                console.log(res)
+                wx.showToast({
+                    title: '订单提交成功',
+                    duration: 1000
+                })
+                that.setData({
+                    orderInfo: res.data
+                })
+                that.pay()
             })
         }
+    },
+    // 支付方法
+    pay() {
+        let that = this;
+        wx.login({
+            success: function (res) {
+                that.setData({
+                    code: res.code
+                })
+                app.api.post('order/buy/WeixinRequest', {
+                    order_amount: that.data.orderInfo.pay_info.order_pay_amount,
+                    pay_sn: that.data.orderInfo.pay_sn,
+                    code: that.data.code
+                }).then(res => {
+                    wx.showToast({
+                        title: '支付中',
+                        icon: 'loading',
+                        duration: 1000
+                    })
+                    wx.requestPayment({
+                        'timeStamp': res.data.timestamp.toString(),
+                        'nonceStr': res.data.noncestr,
+                        'package': 'prepay_id=' + res.data.prepayid,
+                        'signType': 'MD5',
+                        'paySign': res.data.paysign,
+                        'success': function (res) {
+                            wx.showToast({
+                                title: '支付成功',
+                                duration: 1000
+                            })
+                            wx.redirectTo({
+                                url: '/pages/center/orderDetail?order_id=' + that.data.orderInfo.pay_info.order_id,
+                            })
+                        },
+                        'fail': function (res) {
+                            console.log(res)
+                        }
+                    })
 
-        
-        // wx.login({
-        //     success: function (res) {
-        //         that.setData({
-        //             code: res.code
-        //         })
-        //         app.api.post('order/buy/WeixinRequest', {
-        //             order_amount: '',
-        //             pay_sn: '',
-        //             code: that.data.code
-        //         }).then(res => {
-        //             wx.showToast({
-        //                 title: '支付中',
-        //                 icon: 'loading',
-        //                 duration: 1000
-        //             })
-        //             wx.requestPayment({
-        //                 'timeStamp': res.data.timestamp.toString(),
-        //                 'nonceStr': res.data.noncestr,
-        //                 'package': 'prepay_id=' + res.data.prepayid,
-        //                 'signType': 'MD5',
-        //                 'paySign': res.data.paysign,
-        //                 'success': function (res) {
-        //                     console.log(res)
-        //                 },
-        //                 'fail': function (res) {
-        //                     console.log(res)
-        //                 }
-        //             })
-
-        //         })
-        //     }
-        // })
-
+                })
+            }
+        })
     }
 
 })

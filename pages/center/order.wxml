@@ -5,15 +5,15 @@
     </view>
 
     <view class='list'>
-        <navigator url='/pages/center/orderDetail?payType={{payType}}' class='goods' wx:for="{{orderList}}" wx:key="{{item}}">
+        <navigator url='/pages/center/orderDetail?order_id={{item.order_id}}' class='goods' wx:for="{{orderList}}" wx:key="{{item}}">
             <view class='goodsImg'>
-                <image src=''></image>
+                <image src='{{item.goods_image}}'></image>
             </view>
             <view class='goodsInfo'>
-                <view>订单号：</view>
-                <view>商品名称</view>
-                <view>商品价格</view>
-                <view>出行时间（购买时间）</view>
+                <view>订单号：{{item.order_sn}}</view>
+                <view>商品名称：{{item.goods_name}}</view>
+                <view>商品价格：{{item.order_amount}}</view>
+                <view>出行时间：{{item.leave_date}}</view>
             </view>
         </navigator>
     </view>

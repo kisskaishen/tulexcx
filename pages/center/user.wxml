@@ -5,16 +5,16 @@
             <text class='tipTxt'>基本信息(必填)</text>
             <view class='contact'>
                 <view>
-                    <label>手机号</label>
-                    <input type="number" placeholder='您的手机号' bindinput='mobileInput'></input>
+                    <label>姓名</label>
+                    <input type='text' placeholder='您的真实姓名' bindinput='memberTruename'></input>
                 </view>
                 <view>
-                    <label>姓名</label>
-                    <input type='text' placeholder='您的真实姓名'></input>
+                    <label>手机号</label>
+                    <input type="number" placeholder='您的手机号' bindinput='memberMobile'></input>
                 </view>
                 <view>
                     <label>身份证号</label>
-                    <input type='text' placeholder='您的身份证号'></input>
+                    <input type='idcard' placeholder='您的身份证号' bindinput='idCardNum'></input>
                 </view>
             </view>
         </view>
@@ -22,12 +22,12 @@
             <text class='tipTxt'>紧急联系人(选填)</text>
             <view class='contact'>
                 <view>
-                    <label>手机号</label>
-                    <input type="number" placeholder='手机号'></input>
+                    <label>姓名</label>
+                    <input type='text' bindinput='nameInput' placeholder='紧急联系人姓名'></input>
                 </view>
                 <view>
-                    <label>姓名</label>
-                    <input type='text' placeholder='真实姓名'></input>
+                    <label>手机号</label>
+                    <input type="number" bindinput='phoneInput' placeholder='紧急联系人手机号'></input>
                 </view>
             </view>
         </view>

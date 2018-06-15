@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        orderDetail:''
+        orderDetail:{}
     },
     // 下拉刷新
     onPullDownRefresh() {
@@ -42,5 +42,4 @@ Page({
             })
         })
     }
-
 })

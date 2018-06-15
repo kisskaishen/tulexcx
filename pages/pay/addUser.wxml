@@ -2,13 +2,14 @@
 <view class='container'>
     <view class='contact'>
         <view>
-            <label>手机号</label>
-            <input type="number" placeholder='您的手机号' bindinput='telChange'></input>
-        </view>
-        <view>
             <label>姓名</label>
             <input type='text' placeholder='您的真实姓名' bindinput='nameChange'></input>
         </view>
+        <view>
+            <label>手机号</label>
+            <input type="number" placeholder='您的手机号' bindinput='telChange'></input>
+        </view>
+
         <view>
             <label>身份证号</label>
             <input type='text' placeholder='您的身份证号(用于购买保险)' bindinput='idCardChange'></input>

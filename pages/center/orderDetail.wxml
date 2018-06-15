@@ -6,13 +6,15 @@
         </view>
         <view class='topInfo'>
             <text class='name'>{{orderDetail.goods_name}}</text>
+            <text>订单号：{{orderDetail.order_sn}}</text>
+            <text>支付单号：{{orderDetail.pay_sn}}</text>
             <text class='price'>¥{{orderDetail.order_amount}}</text>
         </view>
     </view>
 
     <view class='userView'>
         <view class='userInfo visitor' wx:for="{{orderDetail.visiter_arr}}" wx:key="{{item.visit_phone}}">
-            <text class='tipTxt'>游客{{item}}的信息</text>
+            <text class='tipTxt'>游客{{item.visit_name}}的信息</text>
             <view>
                 <label>姓名</label>
                 <text>{{item.visit_name}}</text>

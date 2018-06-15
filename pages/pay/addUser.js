@@ -86,7 +86,7 @@ Page({
                 })
                 setTimeout(() => {
                     wx.navigateBack(1)
-                }, 1400)
+                }, 1200)
             })
         }
 

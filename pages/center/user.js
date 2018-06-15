@@ -6,8 +6,14 @@ Page({
      * 页面的初始数据
      */
     data: {
+        // 本人信息
         member_id:'',
         member_mobile:'',
+        member_truename:'',
+        id_card_num:'',
+        // 紧急联系人信息
+        name:'',
+        phone:''
     },
 
     /**
@@ -31,17 +37,41 @@ Page({
     onReady: function () {
 
     },
-    mobileInput(e) {
+    memberMobile(e) {
         this.setData({
             member_mobile:e.detail.value
         })
     },
-
+    memberTruename(e) {
+        this.setData({
+            member_truename: e.detail.value
+        })
+    },
+    idCardNum(e) {
+        this.setData({
+            id_card_num: e.detail.value
+        })
+    },
+    nameInput(e) {
+        this.setData({
+            name: e.detail.value
+        })
+    },
+    phoneInput(e) {
+        this.setData({
+            phone: e.detail.value
+        })
+    },
     // 提交
     submit() {
-        app.api.post('member/Member/bind_mobile', {
-            member_id: this.data.member_id,
-            member_mobile: this.data.member_mobile,
+        let that = this
+        app.api.post('member/Member/bind_member_info', {
+            member_id: that.data.member_id,
+            member_mobile: that.data.member_mobile,
+            id_card_num: that.data.id_card_num,
+            member_truename: that.data.member_truename,
+            name: that.data.name,
+            phone: that.data.phone
         }).then(res=>{
             wx.showToast({
                 title: '绑定成功',

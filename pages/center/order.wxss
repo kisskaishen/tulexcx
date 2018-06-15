@@ -40,7 +40,6 @@
 .goodsImg image {
     width: 200rpx;
     height: 180rpx;
-    border:1rpx solid red;
 }
 
 .goodsInfo {
