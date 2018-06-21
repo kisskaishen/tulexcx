@@ -8,8 +8,8 @@
         <swiper indicator-dots autoplay interval='4000' duration="1000" circular>
             <block wx:for="{{imgUrls}}" wx:key="{{item}}">
                 <swiper-item>
-                    <navigator url='/pages/detail/index'>
-                        <image src='{{item}}'></image>
+                    <navigator url='/pages/detail/index?ticket_id={{item.data}}'>
+                        <image src='{{item.url}}'></image>
                     </navigator>
                 </swiper-item>
             </block>

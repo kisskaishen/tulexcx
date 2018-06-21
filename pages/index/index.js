@@ -4,25 +4,21 @@ const app = getApp()
 
 Page({
     data: {
-        imgUrls: [
-            'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-            'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-        ],
+        imgUrls: [],
         menuData: [
             {
                 name: '景点专区',
-                img: 'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
+                img: '/images/icon-ticket.png',
                 path:'/pages/index/goodsList'
             },
             {
                 name: '特卖专区',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
+                img: '/images/icon-sale.png',
                 path: '/pages/index/activity'                
             },
             {
                 name: '装备专区',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+                img: '/images/icon-equip.png',
                 path: '/pages/index/equip'                
             }
         ],
@@ -33,6 +29,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.getBanner()
         this.getIndex()
         this.getList()
     },
@@ -57,6 +54,15 @@ Page({
     // 查找方法
     search() {
 
+    },
+    getBanner() {
+        app.api.post('home/Banner/banner_list',{
+            type:'1'
+        }).then(res=>{
+            this.setData({
+                imgUrls:res.data
+            })
+        })
     },
     // 获取首页信息
     getIndex() {

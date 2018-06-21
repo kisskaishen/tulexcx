@@ -8,7 +8,8 @@
             <text class='name'>{{orderDetail.goods_name}}</text>
             <text>订单号：{{orderDetail.order_sn}}</text>
             <text>支付单号：{{orderDetail.pay_sn}}</text>
-            <text class='price'>¥{{orderDetail.order_amount}}</text>
+            <text class='price'>支付金额：¥{{orderDetail.order_amount}}</text>
+            <text>订单状态：{{orderDetail.order_state}}</text>
         </view>
     </view>
 

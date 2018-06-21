@@ -33,7 +33,6 @@ Page({
                 self.getVisitor()
             },
         })
-
     },
 
     /**
@@ -43,14 +42,28 @@ Page({
 
     },
 
+    onShow:function() {
+        this.onPullDownRefresh()
+    },
+
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        let self = this
         wx.showNavigationBarLoading()
-        console.log('开始刷新')
+        wx.getStorage({
+            key: 'userInfo',
+            success: function (res) {
+                self.setData({
+                    ticket_id: self.data.ticket_id,
+                    member_id: self.data.member_id
+                })
+                self.getDetail()
+                self.getVisitor()
+            },
+        })
         setTimeout(() => {
-            console.log('1s后刷新结束')
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
         }, 1000)
@@ -66,8 +79,9 @@ Page({
     // 先获取详情
     getDetail() {
         let self = this
-        app.api.post('ticket/expert/ticket_detail', {
-            ticket_id: self.data.ticket_id
+        app.api.post('order/buy/cashier_desk', {
+            ticket_id: self.data.ticket_id,
+            member_id: self.data.member_id
         }).then(res => {
             self.setData({
                 info: res.data
@@ -90,7 +104,7 @@ Page({
     showAttention() {
         wx.showModal({
             title: '注意事项',
-            content: this.data.info.attention,
+            content: '请大家服从领队指挥',
             showCancel: false
         })
     },
@@ -182,7 +196,9 @@ Page({
                             })
                         },
                         'fail': function (res) {
-                            console.log(res)
+                            wx.redirectTo({
+                                url: '/pages/center/orderDetail?order_id=' + that.data.orderInfo.pay_info.order_id,
+                            })
                         }
                     })
 

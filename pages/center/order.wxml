@@ -14,6 +14,7 @@
                 <view>商品名称：{{item.goods_name}}</view>
                 <view>商品价格：{{item.order_amount}}</view>
                 <view>出行时间：{{item.leave_date}}</view>
+                <view>支付状态：{{item.order_state}}</view>
             </view>
         </navigator>
     </view>

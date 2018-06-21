@@ -2,10 +2,10 @@
 <view class='container'>
     <view class='banner'>
         <swiper indicator-dots autoplay interval='3000' duration="1000">
-            <block wx:for="{{bannerImgs}}" wx:key="{{item}}">
+            <block wx:for="{{imgUrls}}" wx:key="{{index}}">
                 <swiper-item>
-                    <navigator url='{{item.path}}'>
-                        <image src='{{item.img}}'></image>
+                    <navigator url='/pages/equip/detail?id={{item.id}}'>
+                        <image src='{{item.url}}'></image>
                     </navigator>
                 </swiper-item>
             </block>

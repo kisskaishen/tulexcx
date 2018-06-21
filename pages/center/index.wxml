@@ -9,8 +9,9 @@
                 <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
                 <view>
                     <view class="userinfo-nickname">昵称：{{userInfo.nickName}}</view>
-                    <view wx:if="{{tuleUser.realname}}">真实姓名：</view>
-                    <view wx:if="{{tuleUser.tel}}">手机号：</view>
+                    <view wx:if="{{tuleUser.member_truename}}">真实姓名：{{tuleUser.member_truename}}</view>
+                    <view wx:if="{{tuleUser.member_mobile}}">手机号：{{tuleUser.member_mobile}}</view>
+                    <view wx:if="{{tuleUser.id_card_num}}">身份证号：{{tuleUser.id_card_num}}</view>
                     <view wx:else>
                         <navigator url='/pages/center/user'>绑定信息</navigator>
                     </view>

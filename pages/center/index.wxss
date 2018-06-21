@@ -39,6 +39,8 @@
 .userinfoTop view {
     color: #fff;
     text-shadow: 0 8rpx 8rpx #fd7c28; 
+    font-size: 32rpx;
+    
 }
 /* .userinfo-nickname {
     

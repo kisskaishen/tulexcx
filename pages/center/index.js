@@ -1,19 +1,20 @@
 // pages/center/index.js
 //获取应用实例
 const app = getApp()
-
 Page({
     data: {
         motto: 'Hello World',
         userInfo: {},
+        member_id: '',
         hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),        
-        tuleUser:{},            // 注册会员绑定信息后得到的数据
-        listData:[
+        is_bind_info: '',
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        tuleUser: {},            // 注册会员绑定信息后得到的数据
+        listData: [
             {
-                img:'/images/index.png',
-                name:'订单订单',
-                path:'/pages/center/order?payType=tickets'
+                img: '/images/index.png',
+                name: '订单订单',
+                path: '/pages/center/order?payType=tickets'
             },
             {
                 img: '/images/group.png',
@@ -26,9 +27,7 @@ Page({
     // 下拉刷新
     onPullDownRefresh() {
         wx.showNavigationBarLoading()
-        console.log('开始刷新')
         setTimeout(() => {
-            console.log('1s后刷新结束')
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
         }, 1000)
@@ -39,8 +38,9 @@ Page({
             url: '../logs/logs'
         })
     },
-    
+
     onLoad: function () {
+        let that = this
         if (app.globalData.userInfo) {
             this.setData({
                 userInfo: app.globalData.userInfo,
@@ -67,6 +67,34 @@ Page({
                 }
             })
         }
+        wx.getStorage({
+            key: 'userInfo',
+            success: function (res) {
+                that.setData({
+                    member_id: res.data.member_id
+                })
+                that.getInfo()
+            },
+        })
+    },
+    getInfo() {
+        app.api.post('member/member/member_index', {
+            member_id: this.data.member_id
+        }).then(res => {
+            this.setData({
+                is_bind_info: res.data.is_bind_info
+            })
+            if (this.data.is_bind_info=='1') {
+                app.api.post('member/member/member_info',{
+                    member_id:this.data.member_id
+                }).then(res=>{
+                    console.log(res)
+                    this.setData({
+                        tuleUser:res.data
+                    })
+                })
+            }
+        })
     },
     onGotUserInfo: function (e) {
         app.globalData.userInfo = e.detail.userInfo

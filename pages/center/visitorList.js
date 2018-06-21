@@ -33,6 +33,10 @@ Page({
         self.getVisitor()
     },
 
+    onShow() {
+        self.getVisitor()        
+    },
+
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
@@ -62,13 +66,11 @@ Page({
     // 删除用户
     visitorDelete(e) {
         let self = this;
-        console.log(e.target.dataset.item)
         wx.showModal({
             title: '提醒',
             content: '确定要删除此联系人' + e.target.dataset.item.visit_name + '么？',
             success: function (res) {
                 if (res.confirm) {
-                    console.log(e)
                     app.api.post('member/Visiter/visiter_del',{
                         visit_id:e.target.dataset.item.visit_id
                     }).then(res=>{

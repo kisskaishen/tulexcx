@@ -33,7 +33,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 28rpx;
-    padding: 6px 0;
+    padding: 4rpx 0;
 }
 
 .topInfo .name {

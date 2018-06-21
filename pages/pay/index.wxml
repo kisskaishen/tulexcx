@@ -2,18 +2,21 @@
 <view class='container'>
     <view class='top'>
         <view class='topImg'>
-            <image src=''></image>
+            <image src='{{info.ticket.ticket_img}}'></image>
         </view>
         <view class='topInfo'>
-            <text class='name'>{{info.ticket_name}}</text>
-            <text class='price'>¥{{info.price}}</text>
+            <text class='name'>{{info.ticket.ticket_name}}</text>
+            <text class='price'>¥{{info.ticket.price}}</text>
             <text class='tip' bindtap='showAttention'>注意事项</text>
         </view>
     </view>
 
-    <view class='tipView'>
+    <view class='tipView' wx:if="{{info.is_bind_mobile==''}}">
         <text>应工信部要求，购买人必须绑定手机号</text>
         <navigator url='/pages/center/user'>(点击绑定)</navigator>
+    </view>
+    <view class='tipView' wx:else>
+        <text>您当前账户手机号为：{{info.is_bind_mobile}}</text>
     </view>
 
     <view class='userList'>
@@ -52,7 +55,7 @@
     <view class='footer'>
         <view class='footerMenu'>
             <view class='price'>
-                <text>¥{{info.price}} </text>
+                <text>¥{{info.ticket.price}} </text>
                 <text wx:if="{{userInfoListLength!='0'}}">*{{userInfoListLength}}</text>
             </view>
             <view class='buyBtn'>

@@ -19,7 +19,7 @@
                 <text>剩余人数：{{ticket_info.real_num}}</text>
             </view>
             <view class='infoFr'>
-                <text>¥{{ticket_info.sale_price}}</text>
+                <text>¥{{ticket_info.price}}</text>
                 <navigator url='/pages/pay/index?ticket_id={{ticket_info.ticket_id}}'>
                     <button type='warn' size='mini'>
                         预订

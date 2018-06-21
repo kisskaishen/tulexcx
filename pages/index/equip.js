@@ -7,18 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        bannerImgs: [
-            {
-                id: '1',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-                path: '/pages/equip/detail'
-            },
-            {
-                id: '2',
-                img: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-                path: '/pages/equip/detail'
-            }
-        ],
+        imgUrls: [],
         menuList:[],
         listData: [],
     },
@@ -36,7 +25,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.getBanner()
     },
 
     /**
@@ -46,26 +35,16 @@ Page({
         this.getEquipList()
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
+    getBanner() {
+        app.api.post('home/Banner/banner_list', {
+            type: '2'
+        }).then(res => {
+            this.setData({
+                imgUrls: res.data
+            })
+        })
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作

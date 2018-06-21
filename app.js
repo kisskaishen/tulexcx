@@ -46,6 +46,13 @@ App({
                             }
                         }
                     })
+                } else {
+                    wx.authorize({
+                        scope: 'scope.record',
+                        success:function(res) {
+                            console.log(res)
+                        }
+                    })
                 }
             }
         })
