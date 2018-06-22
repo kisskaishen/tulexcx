@@ -22,3 +22,9 @@
     position: fixed;
     bottom: 0;
 }
+.radio {
+    padding: 20rpx 0;
+}
+.radio radio {
+    margin-left: 16rpx;
+}

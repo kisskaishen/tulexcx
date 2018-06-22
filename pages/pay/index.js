@@ -12,6 +12,7 @@ Page({
         info: {},
         userInfoList: [],        // 选中游客信息列表
         userInfoListLength: 0,
+        userInfoListChildLength: 0,
         code: '',
         visit_id_arr: [],        // 选中游客id
         orderInfo: {},           // 下单成功后的订单信息
@@ -43,6 +44,10 @@ Page({
     },
 
     onShow:function() {
+        this.setData({
+            userInfoListLength: 0,
+            userInfoListChildLength: 0,
+        })
         this.onPullDownRefresh()
     },
 
@@ -121,17 +126,22 @@ Page({
 
         // 取数量
         let userInfoListTags = new Set()            // es6 去重
+        let userInfoChildListTags = new Set()            // es6 去重
         let visit_id_arr = []
         for (var i = 0; i < this.data.visitorList.length; i++) {
             if (this.data.visitorList[i].state == true) {
                 userInfoListTags.add(this.data.visitorList[i])
                 visit_id_arr.push(this.data.visitorList[i].visit_id)
+                if (this.data.visitorList[i].is_child == '1') {
+                    userInfoChildListTags.add(this.data.visitorList[i])
+                }
             }
         }
 
         this.setData({
             userInfoList: userInfoListTags,
             userInfoListLength: userInfoListTags.size,
+            userInfoListChildLength: userInfoChildListTags.size,
             visit_id_arr: visit_id_arr
         })
     },

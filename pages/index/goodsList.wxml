@@ -18,6 +18,6 @@
                 </navigator>
             </view>
         </view>
-        <view class='hrText'>----我是有底线的----</view>
+        <!-- <view class='hrText'>----我是有底线的----</view> -->
     </view>
 </view>

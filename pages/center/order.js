@@ -25,13 +25,12 @@ Page({
         payType: '',
         member_id:'',
         orderList:[],
+        page:1
     },
     // 下拉刷新
     onPullDownRefresh() {
         wx.showNavigationBarLoading()
-        console.log('开始刷新')
         setTimeout(() => {
-            console.log('1s后刷新结束')
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
         }, 1000)
@@ -50,7 +49,7 @@ Page({
                 self.setData({
                     member_id: res.data.member_id
                 })
-                self.getOrder(self.data.navIndexId)
+                self.getOrder(self.data.navIndexId, self.data.page)
             },
         })
         
@@ -67,14 +66,20 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        this.setData({
+            page: 1
+        })
+        this.getOrder(this.data.navIndexId, 1)
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        this.setData({
+            page:this.data.page+1
+        })
+        this.getOrder(this.data.navIndexId, this.data.page)
     },
 
     // 点击nav选择
@@ -82,14 +87,15 @@ Page({
         this.setData({
             navIndexId: e.target.dataset.id
         })
-        this.getOrder(this.data.navIndexId)
+        this.getOrder(this.data.navIndexId,1)
     },
 
     // 订单列表
-    getOrder(type) {
+    getOrder(type,page) {
         app.api.post('order/Order/order_list',{
             member_id:this.data.member_id,
-            order_state:type || ''
+            order_state:type || '',
+            page:page
         }).then(res=>{
             this.setData({
                 orderList:res.data

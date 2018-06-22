@@ -6,7 +6,8 @@
         </view>
         <view class='topInfo'>
             <text class='name'>{{info.ticket.ticket_name}}</text>
-            <text class='price'>¥{{info.ticket.price}}</text>
+            <text class='price'>成人价：¥{{info.ticket.price}}</text>
+            <text class='price'>儿童价：¥{{info.ticket.child_price}}</text>
             <text class='tip' bindtap='showAttention'>注意事项</text>
         </view>
     </view>
@@ -23,7 +24,8 @@
         <view class='listTip'>快捷添加游客信息</view>
         <view class='list'>
               <view class="userInfoView {{item.state==true?'active':''}}" bindtap='chooseUser' data-userInfo='{{item}}' data-key='{{index}}' wx:for="{{visitorList}}" wx:key="{{index}}">
-                {{item.visit_name}}
+                <text>{{item.visit_name}}</text>
+                <text wx:if="{{item.is_child=='1'}}">(优惠)</text>
             </view>  
             <view class='addUser'>
                 <navigator url='/pages/pay/addUser'>
@@ -56,7 +58,9 @@
         <view class='footerMenu'>
             <view class='price'>
                 <text>¥{{info.ticket.price}} </text>
-                <text wx:if="{{userInfoListLength!='0'}}">*{{userInfoListLength}}</text>
+                <text wx:if="{{userInfoListLength!='0'}}">*{{userInfoListLength-userInfoListChildLength}}</text>
+                <text wx:if="{{userInfoListChildLength!='0'}}">+¥{{info.ticket.child_price}} </text>
+                <text wx:if="{{userInfoListChildLength!='0'}}">*{{userInfoListChildLength}}</text>
             </view>
             <view class='buyBtn'>
                 <button type='warn' bindtap='toPay'>支付</button>

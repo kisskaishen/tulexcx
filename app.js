@@ -33,7 +33,6 @@ App({
                                     key: 'userInfo',
                                     data: res.data,
                                 })
-
                             })
 
                             // 
@@ -56,6 +55,9 @@ App({
                 }
             }
         })
+    },
+    onShareAppMessage(options) {
+        console.log(options)
     },
     globalData: {
         code:'',

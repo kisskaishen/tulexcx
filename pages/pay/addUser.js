@@ -10,6 +10,19 @@ Page({
         visit_phone: '',
         vist_idcard_num: '',
         member_id: '',
+        agesItems: [
+            {
+                name: '高于1.2米',
+                checked: true,
+                value:'0'
+            },
+            {
+                name: '不高于1.2米',
+                checked: false,
+                value: '1'                
+            }
+        ],
+        is_child:'0'
     },
 
     /**
@@ -32,6 +45,11 @@ Page({
      */
     onReady: function () {
 
+    },
+    bindchange(e) {
+        this.setData({
+            is_child: e.detail.value
+        })
     },
 
     telChange(e) {
@@ -78,6 +96,7 @@ Page({
                 visit_name: self.data.visit_name,
                 visit_phone: self.data.visit_phone,
                 vist_idcard_num: self.data.vist_idcard_num,
+                is_child: self.data.is_child
             }).then(res => {
                 wx.showToast({
                     title: '添加成功',

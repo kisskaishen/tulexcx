@@ -27,6 +27,7 @@ Page({
     // 下拉刷新
     onPullDownRefresh() {
         wx.showNavigationBarLoading()
+        this.getInfo()
         setTimeout(() => {
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
@@ -76,6 +77,9 @@ Page({
                 that.getInfo()
             },
         })
+    },
+    onShow:function() {
+        this.getInfo()
     },
     getInfo() {
         app.api.post('member/member/member_index', {

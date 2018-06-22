@@ -28,6 +28,10 @@
             </view>
         </view>
         <view class='infoBottom'>
+            <text class="tip">注意事项</text>
+            <text>{{ticket_info.attention}}</text>
+        </view>
+        <view class='infoBottom'>
             <text class="tip">景点介绍</text>
             <text>{{ticket_info.introduce}}</text>
         </view>

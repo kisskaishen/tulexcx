@@ -1,86 +1,44 @@
 /* pages/index/activity.wxss */
+.container > view {
+    background-color: #fff;
+}
+.banner {
+    border-bottom: 1rpx solid #eee;
+}
 .banner image {
     width: 100%;
     height: 300rpx;
 }
-
 .list {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-    position: fixed;
-    top: 300rpx;
-    height: 100%;
-    z-index: 9;
-    background-color: #f2f2f2;
-}
-
-.list > view {
-    position: relative;
-    padding: 100rpx 20rpx 340rpx;
-    flex: 1;
-    overflow-y: scroll;
-}
-.listFl {
-    border-right: 1rpx solid #fff;
-    box-shadow: 4rpx 4rpx 4rpx #fff;
-}
-.listFl .typeName {
-    left: 0;
-    padding-left: 20rpx;
-}
-.typeName {
-    position: fixed;
-    top: 300rpx;
-    right: 0;
-    padding-right: 20rpx;    
-    height: 80rpx;
-    line-height: 80rpx;
-    z-index: 99;
-    background-color: #fd7c28;
-    font-size: 30rpx;
-    color: #fff;
-    border-radius: 60rpx 0rpx;
-}
-
-.goods {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    align-content: flex-start;
-    font-size: 26rpx;
-    background-color: #fff;
-    margin-top: 20rpx;
-    padding: 16rpx;
 }
-.goods > view {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 4rpx 0;
-}
-.goods image {
-    width: 280rpx;
-    height: 200rpx;
+.list > .goods {
+    width: 96%;
+    margin: 10rpx auto;
 }
 
-.price {
-    width: 100%;
+.list > .goods navigator {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 10rpx 0;
+    border-bottom: 1rpx solid #eee;
 }
-.goodsName {
+
+.list > .goods navigator image {
+    width: 100%;
+    height: 360rpx;
+}
+
+.list > .goods navigator .goodsText {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.list > .goods navigator .goodsText text {
     font-size: 30rpx;
-    
-}
-.price .activityPrice {
-    color: red;
-    font-weight: bold;
-    font-size: 28rpx;
-}
-.price .originPrice {
-    text-decoration: line-through;
-    color: #999;
 }

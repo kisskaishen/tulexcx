@@ -1,19 +1,17 @@
 // pages/index/goodsList.js
 const app = getApp();
 Page({
-
     /**
      * 页面的初始数据
      */
     data: {
         listData:[],
+        page:1,
     },
     // 下拉刷新
     onPullDownRefresh() {
         wx.showNavigationBarLoading()
-        console.log('开始刷新')
         setTimeout(() => {
-            console.log('1s后刷新结束')
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
         }, 1000)
@@ -22,7 +20,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.getList()
+        this.getList(this.data.page)
     },
 
     /**
@@ -57,14 +55,20 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-
+        this.setData({
+            page:1
+        })
+        this.getList(this.data.page)
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        this.setData({
+            page: this.data.page
+        })
+        this.getList(this.data.page)
     },
 
     /**
@@ -74,8 +78,11 @@ Page({
 
     },
     // 获取列表
-    getList() {
-        app.api.post('ticket/Expert/Expert_index')
+    getList(page) {
+        app.api.post('ticket/Expert/Expert_index',{
+            is_driving:'1',
+            page:page
+        })
             .then(res=>{
                 this.setData({
                     listData:res.data

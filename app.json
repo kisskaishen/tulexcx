@@ -1,18 +1,15 @@
 {
     "pages": [
         "pages/index/index",
+        "pages/pay/addUser",
+        "pages/index/activity",
         
         "pages/center/orderDetail",
-        
-        
         "pages/center/visitorList",
         "pages/center/index",
-        
         "pages/center/user",
         "pages/pay/index",
-        "pages/pay/addUser",
         "pages/index/goodsList",
-        "pages/index/activity",
         "pages/index/equip",
         "pages/equip/detail",
         "pages/center/order",
@@ -20,7 +17,8 @@
         "pages/detail/index",
         "pages/eval/index",
         "pages/search/index",
-        "pages/logs/log"
+        "pages/logs/log",
+        "pages/activity/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

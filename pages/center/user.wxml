@@ -19,7 +19,7 @@
             </view>
         </view>
         <view class='userInfo'>
-            <text class='tipTxt'>紧急联系人(选填)</text>
+            <text class='tipTxt'>紧急联系人(必填)</text>
             <view class='contact'>
                 <view>
                     <label>姓名</label>

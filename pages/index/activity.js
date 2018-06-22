@@ -8,7 +8,7 @@ Page({
      */
     data: {         
         imgUrls: [],
-        list_info:'',           // 特卖专区列表
+        list:[],           
     },
 
     /**
@@ -16,14 +16,17 @@ Page({
      */
     onLoad: function (options) {
         this.getBanner()
-        this.getList()
+        this.getList(1)
     },
     // 下拉刷新
     onPullDownRefresh() {
         wx.showNavigationBarLoading()
-        console.log('开始刷新')
+        this.getBanner()
+        this.setData({
+            page: 1
+        })
+        this.getList(this.data.page)
         setTimeout(() => {
-            console.log('1s后刷新结束')
             wx.stopPullDownRefresh()
             wx.hideNavigationBarLoading()
         }, 1000)
@@ -32,8 +35,10 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        
     },
+
+    
 
     getBanner() {
         app.api.post('home/Banner/banner_list', {
@@ -46,17 +51,13 @@ Page({
     },
 
     /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+        this.setData({
+            page: 1
+        })
+        this.getList(this.data.page)
     },
 
     /**
@@ -66,10 +67,13 @@ Page({
 
     },
     // 获取特卖列表
-    getList() {
-        app.api.post('equip/special/special_selling').then(res=>{
+    getList(page) {
+        app.api.post('ticket/Expert/Expert_index',{
+            is_driving:'2',
+            page:page
+        }).then(res=>{
             this.setData({
-                list_info:res.data
+                list:res.data
             })
         })
     }
